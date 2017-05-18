@@ -6,4 +6,6 @@ http://www.creativebloq.com/web-design/examples-of-javascript-1233964/2
 
 
 templates: index.html (each)
-MEAN stack is not included, because LasarOS is a distinct project build on that stack
+
+MEAN stack is not included, because LasarOS is a distinct project build on that stack:
+https://github.com/DanielKolsi/LasarOS
