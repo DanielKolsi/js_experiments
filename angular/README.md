@@ -1,1 +1,1 @@
-AngularJS based experiments
+Angular experiments
