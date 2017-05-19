@@ -1,6 +1,7 @@
 
 Combines multiple Javascript libraries + technics 
 
+* EmberJS
 * Promises: https://davidwalsh.name/promises
 * callbacks (async)
 * catch & error handling
