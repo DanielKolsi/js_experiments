@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  background: #222;
+  background: #122;
   min-width: 960px;
 }
 
@@ -15,7 +15,7 @@ rect {
 
 circle {
   fill: none;
-  stroke-width: 2.5px;
+  stroke-width: 10.5px;
 }
 
 </style>
@@ -23,8 +23,8 @@ circle {
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-var width = Math.max(960, innerWidth),
-    height = Math.max(500, innerHeight);
+var width = Math.max(1000, innerWidth),
+    height = Math.max(800, innerHeight);
 
 var i = 0;
 
@@ -40,16 +40,16 @@ svg.append("rect")
 function particle() {
   var m = d3.mouse(this);
 
-  svg.insert("circle", "rect")
-      .attr("cx", m[0])
-      .attr("cy", m[1])
-      .attr("r", 1e-6)
-      .style("stroke", d3.hsl((i = (i + 1) % 160), 1, .5))
-      .style("stroke-opacity", 0.2)
-  .transition()
-      .duration(20000*Math.random())
-      .ease(Math.sqrt)
-      .attr("r", 100)
+  var ellipse = svg.append("ellipse")
+    .attr("cx", m[0])
+    .attr("cy", m[1])
+    .attr("rx", m[0]*Math.random()/10)
+    .attr("ry", m[1]*Math.random()/10)
+    .style("fill", d3.hsl((i = (i + 1) % 360), 1, .5))
+    .transition()
+      .duration(5000*Math.random())
+
+      .attr("r", 100*Math.random())
       .style("stroke-opacity", 1e-6)
       .remove();
 
