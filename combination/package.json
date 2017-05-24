@@ -1,21 +1,27 @@
 {
   "name": "combination",
   "version": "0.0.1",
-  "description": "package for testing Javascript + Node advanced concepts",
-  "main": "index.js",
+  "description": "Advanced Javascript + Node concepts",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon src/index.js",
+    "test": "mocha"
   },
-  "author": "Daniel Kolsi",
-  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
   "dependencies": {
     "express": "^4.15.2",
     "jquery": "^2.2.3",
-    "junk": "^1.0.2",
     "multer": "^1.1.0",
     "nodemon": "^1.9.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
-  }
+  },
+  "keywords": [
+    "combination"
+  ],
+  "author": "Daniel Kolsi",
+  "license": "MIT"
 }
