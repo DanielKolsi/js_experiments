@@ -8,14 +8,18 @@ const PATHS = {
 };
 
 module.exports = {
-  entry: `${PATHS.src}/Root.js`,
+  entry: `${PATHS.src}/Setup.js`,
   output: {
     path: PATHS.build,
     filename: 'bundle.js',
     publicPath: '/'
   },
   plugins: [
-    
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: 'body',
+      filename: 'index.html'
+    })
   ],
   devServer: {
     contentBase: PATHS.build,
@@ -30,7 +34,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          presets: ['es2017', 'react']
+          presets: ['es2015', 'react']
         }
       },
       {
