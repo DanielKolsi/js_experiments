@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Combination</title>
 
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <!--link rel="stylesheet" type="text/css" href="css/style.css"-->
 
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-
 <body>
+  <div class="table">
+    <table style="width:100%">
+      <tr>
+        <th>IP</th>
+        <th>Country</th>
+        <th>City</th>
+      </tr>
+      <tr>
+        <td>122.170.113.124</td>
+        <td>USA</td>
+        <td>New York</td>
+      </tr>
+      <tr>
+        <td>101.193.255.221</td>
+        <td>North Korea</td>
+        <td>Nampo</td>
+      </tr>
+    </table>
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: 'https://ipvigilante.com/139.170.113.124',
+        crossDomain: true,
+
+        success: function(data) {
+          console.log(data);
+        }
+      });
+
+    });
+  </script>
 
 
-     <script type="text/javascript">
-       $(window).load(function(){
-
-
-        $(document).ready(function(){
-
-            $.ajax({
-
-                success: function (data) {
-
-                }
-            });
-
-        });
-});
-
-</script>
-
-
-<div id="test">Just testing abc </div>
+  <div id="test">Just testing IP: https://ipvigilante.com/8.8.8.8
+  </div>
 
 </body>
+
 </html>
