@@ -36,11 +36,14 @@
       $.ajax({
         type: "GET",
         dataType: 'json',
-        url: 'https://ipvigilante.com/139.170.113.124',
+        url: 'https://127.0.0.1:3000',
         crossDomain: true,
 
         success: function(data) {
-          console.log(data);
+          console.log('data='+data);
+        },
+        error: function (err) {
+        console.log("error="+err);
         }
       });
 
