@@ -1,13 +1,31 @@
-'use strict'
+var http = require('http');
+var ecstatic = require('ecstatic');
+var port = 8000;
+var serveStaticFiles = require('ecstatic')({ root: __dirname});
 
-const express = require( 'express' );
-const multer = require( 'multer' );
+/*http.createServer(ecstatic({ root: __dirname + '/public' }), function (req, res) {
 
-let app = express();
+    console.log('req='+req.url);
+    if (req.url.indexOf('/ip') === 0) {
+        return require('http-ip')(req, res); // returns EXPORT
+    }
 
-app.use( express.static('./') );
+    // default: handle the request as a static file
+    //serveStaticFiles(req, res);
+}).listen(port);*/
 
-var server = app.listen( 3000, _ => {
-  console.log('server...');
-  console.log( '***server started. listening to 3000' );
-})
+http.createServer(function (req, res) {
+
+
+    console.log('req='+req.url);
+   if (req.url.indexOf('/ip') === 0) {
+        console.log('was IP');
+        return require('./http-ip')(req, res); // returns EXPORT
+    }
+
+
+    // default: handle the request as a static file
+    serveStaticFiles(req, res);
+}).listen(port);
+
+console.log('Listening on http://localhost:%d', port);
