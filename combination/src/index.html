@@ -10,6 +10,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <body>
+<div id="test">div-id-test</div>
+
   <div class="table">
     <table style="width:100%">
       <tr>
@@ -39,14 +41,13 @@
         dataType: "text",
         url: SERVER_URL+"/ip",
 
-
         success: function(data) {
           mapIP(data);
           console.log('data='+data);
         },
         error: function (err) {
-        console.log("url_error="+SERVER_URL+"/ip");
-        console.log("error="+err);
+          console.log("url_error="+SERVER_URL+"/ip");
+          console.log("error="+err);
         }
       });
 
@@ -54,7 +55,10 @@
 
     function mapIP(data) {
       console.log('mapping, data='+data);
-      //$.each -> JQuery -> HTML add <data>
+
+      var row = "<p>"+data+"</p>";
+      $(row).appendTo("#test");
+
     }
 
   </script>
