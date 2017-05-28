@@ -2,6 +2,7 @@ var http = require('http');
 var request = require("request");
 var url = "https://ipvigilante.com/json/8.8.8.8";
 var country = "country-x";
+var querystring = require('querystring');
 
 
 'use strict';
@@ -59,15 +60,19 @@ https.get(options, function (res) {
 module.exports = function (request, response) {
 
 
+
   var options = {
     host: 'ipvigilante.com',
-    path: '/8.8.8.8/full',
+    //path: '/8.8.8.8/full',
     port : 443,
     method : 'GET',
     headers: {'User-Agent': 'request'}
     }
     var maybe = '';
     console.log('till here')
+    //var ip_string = querystring.parse(options.host.substr(10));
+    console.log('IP_STRING='+options.host.substr(10));
+
     var req = https.get(options, function(ress){
         var body = "";
         ress.on('data', function(data) {
