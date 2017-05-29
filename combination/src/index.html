@@ -33,20 +33,23 @@
   </div>
 <script type="text/javascript" src="config.js"></script>
   <script type="text/javascript">
+
+
     $(document).ready(function() {
       console.log('doc ready');
 
+      var ip = '555.555.555.555';
       $.ajax({
         type: "GET",
         dataType: "text",
-        url: SERVER_URL+"/ip",
+        url: SERVER_URL+"/ip/"+ip,
 
         success: function(data) {
           mapIP(data);
           console.log('data='+data);
         },
         error: function (err) {
-          console.log("url_error="+SERVER_URL+"/ip");
+          console.log("url_error="+SERVER_URL);
           console.log("error="+err);
         }
       });
@@ -60,6 +63,7 @@
       $(row).appendTo("#test");
 
     }
+
 
   </script>
 

@@ -59,15 +59,22 @@ https.get(options, function (res) {
 */
 module.exports = function (request, response) {
 
-
+var url = request.url;
+var ip_string = url.substr(4);
+console.log('server_url='+url);
+console.log('ip_string='+ip_string);
+//console.log('REQUEST-FOR-PARAMS='+querystring.parse(request.url.substr(0)));
 
   var options = {
     host: 'ipvigilante.com',
-    //path: '/8.8.8.8/full',
+    path: '',
     port : 443,
     method : 'GET',
     headers: {'User-Agent': 'request'}
     }
+    options.path = '/8.8.8.8/full';
+    //options.path = "/"+ip_string;
+
     var maybe = '';
     console.log('till here')
     //var ip_string = querystring.parse(options.host.substr(10));
