@@ -72,8 +72,8 @@ console.log('ip_string='+ip_string);
     method : 'GET',
     headers: {'User-Agent': 'request'}
     }
-    options.path = '/8.8.8.8/full';
-    //options.path = "/"+ip_string;
+    //options.path = '/8.8.8.8/full';
+    options.path = "/"+ip_string;
 
     var maybe = '';
     console.log('till here')
