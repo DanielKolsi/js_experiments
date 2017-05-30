@@ -3,7 +3,14 @@
 
 <head>
   <title>Combination</title>
+  <style>
+      #map {
+        height: 400px;
+        width: 70%;
+       }
+  </style>
   <!--link rel="stylesheet" type="text/css" href="css/style.css"-->
+  <script type="text/javascript" src="src/config.js"></script>
   <script src="https://unpkg.com/react@15.3.0/dist/react.js"></script>
      <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.js"></script>
      <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
@@ -12,13 +19,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <body>
+
   <div id="content"></div>
   <div id="test"></div>
   <h3>Google Maps IP mapping</h3>
  <div id="map"></div>
  <script>
+  var latitude = 0;
+  var longitude = 0;
    function initMap() {
-     var uluru = {lat: -25.363, lng: 131.044};
+     var uluru = {lat: latitude, lng: longitude};
      var map = new google.maps.Map(document.getElementById('map'), {
        zoom: 4,
        center: uluru
@@ -28,16 +38,16 @@
        map: map
      });
    }
- </script>
-
- <script async defer
- src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
- </script>
-
-<script type="text/javascript">
-
 </script>
-  <script type="text/javascript" src="../src/config.js"></script>
+ <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU&callback=initMap'
+     async defer>
+     </script>
+ <!--script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+ </script-->
+
+
+
   <script type="text/javascript">
 
     $(document).ready(function() {
@@ -65,8 +75,30 @@
     function mapIP(data) {
       console.log('mapping, data='+data);
       var result = JSON.parse(data);
-      var row = "<p>"+data+"</p>";
-      $(row).appendTo("#test");
+      /*response.write('<br>IPv4: '+ result.data.ipv4);
+      response.write('<br>Hostname: '+ result.data.hostname);
+      response.write('<br>Continent code: '+ result.data.continent_code);
+      response.write('<br>Continent name: '+ result.data.continent_name);
+      response.write('<br>Country ISO code: '+ result.data.country_iso_code);
+      response.write('<br>Country name: '+ result.data.country_name);
+      response.write('<br>Subdivision 1 ISO code: '+ result.data.subdivision_1_iso_code);
+      response.write('<br>Subdivision 1 name: '+ result.data.subdivision_1_name);
+      response.write('<br>Subdivision 2 ISO code: '+ result.data.subdivision_2_iso_code);
+      response.write('<br>Subdivision 2 name: '+ result.data.subdivision_2_name);
+      response.write('<br>City: '+result.data.city_name);
+      response.write('<br>Latitude: '+result.data.latitude);
+      response.write('<br>Longitude: '+result.data.longitude);
+      response.write('<br>Metro code: '+ result.data.metro_code);
+      response.write('<br>Time zone: '+ result.data.time_zone);
+      response.write('<br>Postal code: '+ result.data.postal_code);
+
+      response.write('<br>Accuracy radius: '+ result.data.accuracy_radius);*/
+      latitude = result.data.latitude;
+      longitude = result.data.longitude;
+      var row1 = "<p>"+'<br>IPv4: '+result.data.ipv4+"</p>";
+      $(row1).appendTo("#test");
+      var row2 = "<p>"+'<br>Hostname: '+ result.data.hostname+"</p>";
+      $(row2).appendTo("#test");
       // $.each
       //var tblRow = "<tr  + "<td>"  "</td>" + "</tr>";
 			//$(tblRow).appendTo(); // parse JSON from client side & append to table
