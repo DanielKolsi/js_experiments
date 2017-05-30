@@ -64,7 +64,7 @@
 
     function mapIP(data) {
       console.log('mapping, data='+data);
-
+      var result = JSON.parse(data);
       var row = "<p>"+data+"</p>";
       $(row).appendTo("#test");
       // $.each

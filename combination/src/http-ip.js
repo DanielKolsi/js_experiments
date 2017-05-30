@@ -82,8 +82,10 @@ var ip_string = url.substr(4);
 
         if (res.statusCode === 200) {
            try {
-             var result = JSON.parse(body); // parse at client side?
-             response.write('<br>Status: '+ result.data.status);
+             var result = JSON.parse(body); // JSON -> object
+             console.log('result='+body);
+             response.write(body);
+             /*response.write('<br>Status: '+ result.data.status);
              response.write('<br>IPv4: '+ result.data.ipv4);
              response.write('<br>Hostname: '+ result.data.hostname);
              response.write('<br>Continent code: '+ result.data.continent_code);
@@ -101,7 +103,7 @@ var ip_string = url.substr(4);
              response.write('<br>Time zone: '+ result.data.time_zone);
              response.write('<br>Postal code: '+ result.data.postal_code);
 
-             response.write('<br>Accuracy radius: '+ result.data.accuracy_radius);
+             response.write('<br>Accuracy radius: '+ result.data.accuracy_radius);*/
              response.end();
            } catch (e) {
               console.log('Error parsing JSON!');
