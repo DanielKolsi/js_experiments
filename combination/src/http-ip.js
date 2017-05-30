@@ -61,9 +61,6 @@ module.exports = function (request, response) {
 
 var url = request.url;
 var ip_string = url.substr(4);
-console.log('server_url='+url);
-console.log('ip_string='+ip_string);
-//console.log('REQUEST-FOR-PARAMS='+querystring.parse(request.url.substr(0)));
 
   var options = {
     host: 'ipvigilante.com',
@@ -72,8 +69,8 @@ console.log('ip_string='+ip_string);
     method : 'GET',
     headers: {'User-Agent': 'request'}
     }
-    //options.path = '/8.8.8.8/full';
-    options.path = "/"+ip_string;
+
+    options.path = "/"+ip_string+"/full";
 
 
     var req = https.get(options, function(res){
@@ -86,9 +83,25 @@ console.log('ip_string='+ip_string);
         if (res.statusCode === 200) {
            try {
              var result = JSON.parse(body);
-             response.write('City: '+result.data.city_name);
-             response.write('Latitude: '+result.data.latitude);
-             response.write('Longitude: '+result.data.longitude);
+             response.write('<br>Status: '+ result.data.status);
+             response.write('<br>IPv4: '+ result.data.ipv4);
+             response.write('<br>Hostname: '+ result.data.hostname);
+             response.write('<br>Continent code: '+ result.data.continent_code);
+             response.write('<br>Continent name: '+ result.data.continent_name);
+             response.write('<br>Country ISO code: '+ result.data.country_iso_code);
+             response.write('<br>Country name: '+ result.data.country_name);
+             response.write('<br>Subdivision 1 ISO code: '+ result.data.subdivision_1_iso_code);
+             response.write('<br>Subdivision 1 name: '+ result.data.subdivision_1_name);
+             response.write('<br>Subdivision 2 ISO code: '+ result.data.subdivision_2_iso_code);
+             response.write('<br>Subdivision 2 name: '+ result.data.subdivision_2_name);
+             response.write('<br>City: '+result.data.city_name);
+             response.write('<br>Latitude: '+result.data.latitude);
+             response.write('<br>Longitude: '+result.data.longitude);
+             response.write('<br>Metro code: '+ result.data.metro_code);
+             response.write('<br>Time zone: '+ result.data.time_zone);
+             response.write('<br>Postal code: '+ result.data.postal_code);
+
+             response.write('<br>Accuracy radius: '+ result.data.accuracy_radius);
              response.end();
            } catch (e) {
               console.log('Error parsing JSON!');
