@@ -29,7 +29,7 @@
   getLocationByIP = function(ip) {
       $.ajax({
         type: "GET",
-        dataType: "text",
+        dataType: "text" , // JSON
         url: SERVER_URL+"/ip/"+ip,
 
         success: function(data) {
@@ -48,6 +48,9 @@
 
       var row = "<p>"+data+"</p>";
       $(row).appendTo("#test");
+      // $.each
+      //var tblRow = "<tr  + "<td>"  "</td>" + "</tr>";
+			//$(tblRow).appendTo(); // parse JSON from client side & append to table
     }
 
   </script>

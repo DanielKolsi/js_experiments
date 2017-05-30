@@ -82,7 +82,7 @@ var ip_string = url.substr(4);
 
         if (res.statusCode === 200) {
            try {
-             var result = JSON.parse(body);
+             var result = JSON.parse(body); // parse at client side?
              response.write('<br>Status: '+ result.data.status);
              response.write('<br>IPv4: '+ result.data.ipv4);
              response.write('<br>Hostname: '+ result.data.hostname);
