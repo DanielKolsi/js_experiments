@@ -75,34 +75,34 @@ console.log('ip_string='+ip_string);
     //options.path = '/8.8.8.8/full';
     options.path = "/"+ip_string;
 
-    var maybe = '';
-    console.log('till here')
-    //var ip_string = querystring.parse(options.host.substr(10));
-    console.log('IP_STRING='+options.host.substr(10));
 
-    var req = https.get(options, function(ress){
+    var req = https.get(options, function(res){
         var body = "";
-        ress.on('data', function(data) {
-            console.log('data came');
+        res.on('data', function(data) {
             body += data;
         });
-        ress.on('end', function() {
-            console.log('ended too');
-            //maybe = JSON.parse(body);
-            var result = JSON.parse(body);
-            console.log('result='+result.data.city_name);
-            response.write(result.data.city_name);
-            response.end();
+        res.on('end', function() {
+
+        if (res.statusCode === 200) {
+           try {
+             var result = JSON.parse(body);
+             response.write('City: '+result.data.city_name);
+             response.write('Latitude: '+result.data.latitude);
+             response.write('Longitude: '+result.data.longitude);
+             response.end();
+           } catch (e) {
+              console.log('Error parsing JSON!');
+              }
+            } else {
+              console.log('Status:', res.statusCode);
+          }
+
         });
-    });
-    console.log('here too man');
+      });
     req.on('error', function(e) {
         console.log('Problem with request: ' + e.message);
     });
-
-
 }
-
 
 function testi () {
   console.log('function-ASCII');

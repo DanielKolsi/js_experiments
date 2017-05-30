@@ -1,5 +1,5 @@
 
-class NameForm extends React.Component {
+class IPForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
@@ -13,8 +13,6 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    //ip = this.state.value;
-    alert('A name was submitted: ' + this.state.value);
     getLocationByIP(this.state.value);
     event.preventDefault();
   }
@@ -23,10 +21,10 @@ class NameForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          IP:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Find city" />
       </form>
     );
   }
@@ -70,6 +68,6 @@ class NameForm extends React.Component {
 });
 */
 ReactDOM.render(
-  <NameForm />,
+  <IPForm />,
   document.getElementById('content')
 );
