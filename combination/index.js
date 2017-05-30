@@ -13,6 +13,7 @@ class IPForm extends React.Component {
   }
 
   handleSubmit(event) {
+    //document.getElementById("lat").value, document.getElementById("lng").value);
     getLocationByIP(this.state.value);
     event.preventDefault();
   }
