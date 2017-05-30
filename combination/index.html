@@ -3,56 +3,56 @@
 
 <head>
   <title>Combination</title>
-
   <!--link rel="stylesheet" type="text/css" href="css/style.css"-->
+  <script src="https://unpkg.com/react@15.3.0/dist/react.js"></script>
+     <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.js"></script>
+     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <body>
-  <div class="table">
-    <table style="width:100%">
-      <tr>
-        <th>IP</th>
-        <th>Country</th>
-        <th>City</th>
-      </tr>
-      <tr>
-        <td>122.170.113.124</td>
-        <td>USA</td>
-        <td>New York</td>
-      </tr>
-      <tr>
-        <td>101.193.255.221</td>
-        <td>North Korea</td>
-        <td>Nampo</td>
-      </tr>
-    </table>
-  </div>
+  <div id="content"></div>
+  <div id="test"></div>
 
+<script type="text/javascript">
+
+</script>
+  <script type="text/javascript" src="../src/config.js"></script>
   <script type="text/javascript">
-    $(document).ready(function() {
 
+    $(document).ready(function() {
+      console.log('doc ready');
+
+    });
+
+  getLocationByIP = function(ip) {
       $.ajax({
         type: "GET",
-        dataType: 'json',
-        url: 'https://127.0.0.1:3000',
-        crossDomain: true,
+        dataType: "text",
+        url: SERVER_URL+"/ip/"+ip,
 
         success: function(data) {
+          mapIP(data);
           console.log('data='+data);
         },
         error: function (err) {
-        console.log("error="+err);
+          console.log("url_error="+SERVER_URL);
+          console.log("error="+err);
         }
       });
+    };
 
-    });
+    function mapIP(data) {
+      console.log('mapping, data='+data);
+
+      var row = "<p>"+data+"</p>";
+      $(row).appendTo("#test");
+    }
+
   </script>
+  <script type="text/babel" src="./index.js"></script>
 
-
-  <div id="test">Just testing IP: https://ipvigilante.com/8.8.8.8
-  </div>
 
 </body>
 

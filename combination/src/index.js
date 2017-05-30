@@ -1,7 +1,7 @@
 var http = require('http');
 var ecstatic = require('ecstatic');
 var port = 8000;
-var serveStaticFiles = require('ecstatic')({ root: __dirname});
+var serveStaticFiles = require('ecstatic')({ root: './'});
 
 /*http.createServer(ecstatic({ root: __dirname + '/public' }), function (req, res) {
 
@@ -22,7 +22,6 @@ http.createServer(function (req, res) {
         console.log('was IP');
         return require('./http-ip')(req, res); // returns EXPORT
     }
-
 
     // default: handle the request as a static file
     serveStaticFiles(req, res);
