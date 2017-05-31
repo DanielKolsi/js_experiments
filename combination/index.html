@@ -31,7 +31,7 @@
   <div data-first="dataTable1">
 
     <br>
-    <table width="100%" id="IPTable1"  border="1">
+    <table width="100%" id="IPTable1" border="1">
       <thead>
         <th>Latitude</th>
         <th>Longitude</th>
@@ -43,7 +43,7 @@
     </table>
   </div>
   <div data-second="dataTable2">
-    <table width="100%" id="IPTable2"  border="1">
+    <table width="100%" id="IPTable2" border="1">
       <thead>
         <th>Hostname</th>
         <th>Time zone</th>
@@ -55,7 +55,7 @@
     </table>
   </div>
   <div data-third="dataTable3">
-    <table width="100%" id="IPTable3"  border="1">
+    <table width="100%" id="IPTable3" border="1">
       <thead>
         <th>Continent code</th>
         <th>Continent name</th>
@@ -91,7 +91,6 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     }
 
-
     function pan(lat, lng) {
       //var panPoint = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value);
       var panPoint = new google.maps.LatLng(lat, lng);
@@ -108,13 +107,12 @@
 
     });
 
-    clearTable = function() {
-      console.log('removing table xxx');
-      $('[data-first]').hide();
-      $('[data-second]').hide();
-      $('[data-third]').hide();
-
-    }
+    emptyTable = function() {
+      console.log('emptying tables');
+      $('#IPTable1 tbody').empty();
+      $('#IPTable2 tbody').empty();
+      $('#IPTable3 tbody').empty();
+    };
 
     getLocationByIP = function(ip) {
       $.ajax({
@@ -143,9 +141,9 @@
       var row1 = "<tr style=\x22text-align:center\x22>" + "<td>" + lat + "</td>" + "<td>" + lng + "</td>" + "<td>" + result.data.city_name + "</td>" + "<td>" + result.data.country_name + "</td></tr>";
       var row2 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.hostname + "</td>" + "<td>" + result.data.time_zone + "</td>" + "<td>" + result.data.postal_code + "</td>" + "<td>" + result.data.country_iso_code + "</td></tr>";
       var row3 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.continent_code + "</td>" + "<td>" + result.data.continent_name + "</td>" + "<td>" + result.data.metro_code + "</td>" + "<td>" + result.data.accuracy_radius + "</td></tr>";
-      $(row1).appendTo("#dataTable1 tbody");
-      $(row2).appendTo("#dataTable2 tbody");
-      $(row3).appendTo("#dataTable3 tbody");
+      $(row1).appendTo("#IPTable1 tbody");
+      $(row2).appendTo("#IPTable2 tbody");
+      $(row3).appendTo("#IPTable3 tbody");
     }
   </script>
   <script type="text/babel" src="./index.js"></script>

@@ -13,17 +13,23 @@ class IPForm extends React.Component {
   }
 
   handleSubmit(event) {
+
+    $('[data-first]').show();
+    $('[data-second]').show();
+    $('[data-third]').show();
     //document.getElementById("lat").value, document.getElementById("lng").value);
     getLocationByIP(this.state.value);
     event.preventDefault();
   }
 
   removeTable() {
-    console.log('removing table---');
-    clearTable();
-    $("#dataTable1").hide();
+    $('#IPTable1 tbody').empty();
+    $('#IPTable2 tbody').empty();
+    $('#IPTable3 tbody').empty();
+    $('[data-first]').hide();
+    $('[data-second]').hide();
+    $('[data-third]').hide();
   }
-
 
   render() {
     return (
