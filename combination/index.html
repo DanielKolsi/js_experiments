@@ -24,7 +24,23 @@
 
 <body>
 
-  <div id="content"></div>
+  <div id="content">
+
+  </div>
+  <div id="dataTable">
+    <table width="100%" id="productsTable" data-products-table="products-table" border="1">
+      <thead>
+
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>City</th>
+        <th>Country</th>
+
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
   <div id="test"></div>
   <h3>Google Maps IP mapping</h3>
   <div id="ip-map"></div>
@@ -92,33 +108,13 @@
       lat = result.data.latitude;
       lng = result.data.longitude;
       pan(lat, lng)
-      /*response.write('<br>IPv4: '+ result.data.ipv4);
-      response.write('<br>Hostname: '+ result.data.hostname);
-      response.write('<br>Continent code: '+ result.data.continent_code);
-      response.write('<br>Continent name: '+ result.data.continent_name);
-      response.write('<br>Country ISO code: '+ result.data.country_iso_code);
-      response.write('<br>Country name: '+ result.data.country_name);
-      response.write('<br>Subdivision 1 ISO code: '+ result.data.subdivision_1_iso_code);
-      response.write('<br>Subdivision 1 name: '+ result.data.subdivision_1_name);
-      response.write('<br>Subdivision 2 ISO code: '+ result.data.subdivision_2_iso_code);
-      response.write('<br>Subdivision 2 name: '+ result.data.subdivision_2_name);
-      response.write('<br>City: '+result.data.city_name);
-      response.write('<br>Latitude: '+result.data.latitude);
-      response.write('<br>Longitude: '+result.data.longitude);
-      response.write('<br>Metro code: '+ result.data.metro_code);
-      response.write('<br>Time zone: '+ result.data.time_zone);
-      response.write('<br>Postal code: '+ result.data.postal_code);
 
-      response.write('<br>Accuracy radius: '+ result.data.accuracy_radius);*/
-      latitude = result.data.latitude;
-      longitude = result.data.longitude;
-      var row1 = "<p>" + '<br>IPv4: ' + result.data.ipv4 + "</p>";
-      $(row1).appendTo("#test");
-      var row2 = "<p>" + '<br>Hostname: ' + result.data.hostname + "</p>";
-      $(row2).appendTo("#test");
-      // $.each
-      //var tblRow = "<tr  + "<td>"  "</td>" + "</tr>";
-      //$(tblRow).appendTo(); // parse JSON from client side & append to table
+      var row1 = "<tr style=\x22text-align:center\x22>" + "<td>" + lat + "</td>" + "<td>" + lng + "</td>" + "<td>" + result.data.city_name + "</td>" + "<td>" + result.data.country_name + "</td></tr>";
+      var row2 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.hostname + "</td>" + "<td>" + result.data.time_zone + "</td>" + "<td>" + result.data.postal_code + "</td>" + "<td>" + result.data.continent_name + "</td></tr>";
+      var row3 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.continent_code + "</td>" + "<td>" + result.data.continent_name + "</td>" + "<td>" + result.data.metro_code + "</td>" + "<td>" + result.data.accuracy_radius + "</td></tr>";
+      $(row1).appendTo("#dataTable tbody");
+      $(row2).appendTo("#dataTable tbody");
+      $(row3).appendTo("#dataTable tbody");
     }
   </script>
   <script type="text/babel" src="./index.js"></script>
