@@ -6,11 +6,11 @@
   <style>
     html,
     body,
-    #map-canvas {
-      margin: 0;
-      padding: 0;
-      width: 80%;
-      height: 90%;
+    #ip-map {
+      margin: 50;
+      padding: 10;
+      width: 98%;
+      height: 95%;
     }
   </style>
   <!--link rel="stylesheet" type="text/css" href="css/style.css"-->
@@ -27,7 +27,7 @@
   <div id="content"></div>
   <div id="test"></div>
   <h3>Google Maps IP mapping</h3>
-  <div id="map-canvas"></div>
+  <div id="ip-map"></div>
   <script>
     var map;
     var marker;
@@ -38,7 +38,7 @@
         center: new google.maps.LatLng(-34.397, 150.644),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      map = new google.maps.Map(document.getElementById('map-canvas'),
+      map = new google.maps.Map(document.getElementById('ip-map'),
         mapOptions);
 
         marker = new google.maps.Marker({
@@ -51,17 +51,16 @@
     }
 
 
-    function pan() {
-      var panPoint = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value);
+    function pan(lat, lng) {
+      //var panPoint = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value);
+      var panPoint = new google.maps.LatLng(lat, lng);
       map.panTo(panPoint);
       marker.setPosition(panPoint);
     }
   </script>
-  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU&callback=initialize' async defer>
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU&callback=initialize'
+    async defer>
   </script>
-  <!--script async defer
- src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
- </script-->
 
   <script type="text/javascript">
     $(document).ready(function() {
@@ -89,6 +88,10 @@
     function mapIP(data) {
       console.log('mapping, data=' + data);
       var result = JSON.parse(data);
+
+      lat = result.data.latitude;
+      lng = result.data.longitude;
+      pan(lat, lng)
       /*response.write('<br>IPv4: '+ result.data.ipv4);
       response.write('<br>Hostname: '+ result.data.hostname);
       response.write('<br>Continent code: '+ result.data.continent_code);
@@ -122,8 +125,6 @@
   <label>lat</label><input type="text" id="lat" />
   <br/>
   <label>lng</label><input type="text" id="lng" />
-  <input type="button" value="updateCenter" onclick="pan()" />
-
-</body>
-
+  <input type="button" value="updateCenter" onclick="pan(60, 60)" />
+  </body>
 </html>
