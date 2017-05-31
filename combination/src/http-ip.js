@@ -33,7 +33,7 @@ var ip_string = url.substr(4);
         if (res.statusCode === 200) {
            try {
              var result = JSON.parse(body);
-             response.write(body
+             response.write(body);
              response.end();
            } catch (e) {
               console.log('Error parsing JSON!');

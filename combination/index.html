@@ -27,15 +27,40 @@
   <div id="content">
 
   </div>
-  <div id="dataTable">
-    <table width="100%" id="IPTable"  border="1">
-      <thead>
 
+  <div data-first="dataTable1">
+
+    <br>
+    <table width="100%" id="IPTable1"  border="1">
+      <thead>
         <th>Latitude</th>
         <th>Longitude</th>
         <th>City</th>
         <th>Country</th>
-
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <div data-second="dataTable2">
+    <table width="100%" id="IPTable2"  border="1">
+      <thead>
+        <th>Hostname</th>
+        <th>Time zone</th>
+        <th>Postal code</th>
+        <th>Country ISO code</th>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <div data-third="dataTable3">
+    <table width="100%" id="IPTable3"  border="1">
+      <thead>
+        <th>Continent code</th>
+        <th>Continent name</th>
+        <th>Metro code</th>
+        <th>Accuracy radius</th>
       </thead>
       <tbody>
       </tbody>
@@ -80,9 +105,16 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      console.log('doc ready');
 
     });
+
+    clearTable = function() {
+      console.log('removing table xxx');
+      $('[data-first]').hide();
+      $('[data-second]').hide();
+      $('[data-third]').hide();
+
+    }
 
     getLocationByIP = function(ip) {
       $.ajax({
@@ -92,7 +124,6 @@
 
         success: function(data) {
           mapIP(data);
-          console.log('data=' + data);
         },
         error: function(err) {
           console.log("url_error=" + SERVER_URL);
@@ -102,7 +133,7 @@
     };
 
     function mapIP(data) {
-      console.log('mapping, data=' + data);
+
       var result = JSON.parse(data);
 
       lat = result.data.latitude;
@@ -110,11 +141,11 @@
       pan(lat, lng)
 
       var row1 = "<tr style=\x22text-align:center\x22>" + "<td>" + lat + "</td>" + "<td>" + lng + "</td>" + "<td>" + result.data.city_name + "</td>" + "<td>" + result.data.country_name + "</td></tr>";
-      var row2 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.hostname + "</td>" + "<td>" + result.data.time_zone + "</td>" + "<td>" + result.data.postal_code + "</td>" + "<td>" + result.data.continent_name + "</td></tr>";
+      var row2 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.hostname + "</td>" + "<td>" + result.data.time_zone + "</td>" + "<td>" + result.data.postal_code + "</td>" + "<td>" + result.data.country_iso_code + "</td></tr>";
       var row3 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.continent_code + "</td>" + "<td>" + result.data.continent_name + "</td>" + "<td>" + result.data.metro_code + "</td>" + "<td>" + result.data.accuracy_radius + "</td></tr>";
-      $(row1).appendTo("#dataTable tbody");
-      $(row2).appendTo("#dataTable tbody");
-      $(row3).appendTo("#dataTable tbody");
+      $(row1).appendTo("#dataTable1 tbody");
+      $(row2).appendTo("#dataTable2 tbody");
+      $(row3).appendTo("#dataTable3 tbody");
     }
   </script>
   <script type="text/babel" src="./index.js"></script>

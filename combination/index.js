@@ -18,15 +18,25 @@ class IPForm extends React.Component {
     event.preventDefault();
   }
 
+  removeTable() {
+    console.log('removing table---');
+    clearTable();
+    $("#dataTable1").hide();
+  }
+
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          IP:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Find city" />
-      </form>
+      <div id="#buttons">
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            IP:
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value=" map IP" />
+        </form>
+        <button onClick={this.removeTable}>Remove table</button>
+      </div>
     );
   }
 }
