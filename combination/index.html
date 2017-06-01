@@ -23,6 +23,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <body>
+  <script type="text/javascript" async defer>
+      JSElement = document.createElement('script');
+      JSElement.src = 'https://maps.googleapis.com/maps/api/js?key='+API_KEY+'&callback=initialize';
+      document.getElementsByTagName('head')[0].appendChild(JSElement);
+  </script>
 
   <div id="content">
   </div>
@@ -107,22 +112,10 @@
       map.panTo(point);
       marker.setPosition(point);
     }
-
-
   </script>
 
-  <script type="text/javascript" async defer>
 
-      JSElement = document.createElement('script');
-      JSElement.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU&callback=initialize';
 
-      document.getElementsByTagName('head')[0].appendChild(JSElement);
-
-  </script>
-
-  <!--script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU&callback=initialize'
-    async defer>
-  </script-->
 
   <script type="text/javascript">
     $(document).ready(function() {
