@@ -17,11 +17,9 @@ class IPForm extends React.Component {
 
     var pattern = /^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/; // IP validating pattern
     if (!pattern.test(this.state.value)) {
-      alert('Invalid IP2 = ' + this.state.value);
-
+      alert('Invalid IP = ' + this.state.value);
       return;
     } else {
-
       $('[data-first]').show();
       $('[data-second]').show();
       $('[data-third]').show();
@@ -43,14 +41,17 @@ class IPForm extends React.Component {
   render() {
     return (
       <div id="#buttons">
+
         <form onSubmit={this.handleSubmit}>
           <label>
             IP:
             <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
-          <input type="submit" value=" map IP" />
+
+          <input type="submit" value=" map IP " />
         </form>
         <button onClick={this.removeTable}>Remove table</button>
+
       </div>
     );
   }

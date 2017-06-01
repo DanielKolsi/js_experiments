@@ -2,18 +2,9 @@
 <html>
 
 <head>
-  <title>Combination</title>
-  <style>
-    html,
-    body,
-    #ip-map {
-      margin: 5;
-      padding: 10;
-      width: 99%;
-      height: 85%;
-    }
-  </style>
-  <!--link rel="stylesheet" type="text/css" href="css/style.css"-->
+  <title>IP to location data mapper (Combination)</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="src/config.js"></script>
   <script src="https://unpkg.com/react@15.3.0/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.js"></script>
@@ -32,10 +23,9 @@
   <div id="content">
   </div>
   <div id="latLong">
-    <label>Latitude: </label><input type="text" id="lat" />
-    <br/>
-    <label>Longitude: </label><input type="text" id="lng" />
-    <input type="button" value="updateCenter" onclick="pan()" />
+    <label> Latitude: </label><input type="text" id="lat" />
+    <label> Longitude: </label><input type="text" id="lng" />
+    <input type="button" value="Set marker" onclick="pan()" />
   </div>
 
   <div data-first="dataTable1">
@@ -76,7 +66,7 @@
       </tbody>
     </table>
   </div>
-  <div id="test"></div>
+
   <br>
   <div id="ip-map"></div>
   <script>
@@ -85,15 +75,15 @@
 
     function initialize() {
       var mapOptions = {
-        zoom: 8,
-        center: new google.maps.LatLng(40, 40),
+        zoom: MAP_ZOOM_LEVEL,
+        center: new google.maps.LatLng(INIT_LAT, INIT_LNG),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
       map = new google.maps.Map(document.getElementById('ip-map'),
         mapOptions);
 
         marker = new google.maps.Marker({
-          position: new google.maps.LatLng(40, 40),
+          position: new google.maps.LatLng(INIT_LAT, INIT_LNG),
           title:"IP Point"
         });
 
