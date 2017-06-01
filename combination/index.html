@@ -25,7 +25,12 @@
 <body>
 
   <div id="content">
-
+  </div>
+  <div id="latLong">
+    <label>Latitude: </label><input type="text" id="lat" />
+    <br/>
+    <label>Longitude: </label><input type="text" id="lng" />
+    <input type="button" value="updateCenter" onclick="pan()" />
   </div>
 
   <div data-first="dataTable1">
@@ -76,14 +81,14 @@
     function initialize() {
       var mapOptions = {
         zoom: 8,
-        center: new google.maps.LatLng(-34.397, 150.644),
+        center: new google.maps.LatLng(40, 40),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
       map = new google.maps.Map(document.getElementById('ip-map'),
         mapOptions);
 
         marker = new google.maps.Marker({
-          position: new google.maps.LatLng(-34.397, 150.644),
+          position: new google.maps.LatLng(40, 40),
           title:"IP Point"
         });
 
@@ -91,12 +96,18 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     }
 
-    function pan(lat, lng) {
-      //var panPoint = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value);
-      var panPoint = new google.maps.LatLng(lat, lng);
-      map.panTo(panPoint);
-      marker.setPosition(panPoint);
+    function pan() {
+      var point = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value);
+      map.panTo(point);
+      marker.setPosition(point);
     }
+
+    function moveToIP(lat, lng) {
+      var point = new google.maps.LatLng(lat, lng);
+      map.panTo(point);
+      marker.setPosition(point);
+    }
+
   </script>
     <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU&callback=initialize'
     async defer>
@@ -107,14 +118,9 @@
 
     });
 
-    emptyTable = function() {
-      console.log('emptying tables');
-      $('#IPTable1 tbody').empty();
-      $('#IPTable2 tbody').empty();
-      $('#IPTable3 tbody').empty();
-    };
 
     getLocationByIP = function(ip) {
+
       $.ajax({
         type: "GET",
         dataType: "text", // JSON
@@ -124,6 +130,7 @@
           mapIP(data);
         },
         error: function(err) {
+          alert('Incorrect IP: ' + SERVER_URL + " error = " + err);
           console.log("url_error=" + SERVER_URL);
           console.log("error=" + err);
         }
@@ -136,7 +143,7 @@
 
       lat = result.data.latitude;
       lng = result.data.longitude;
-      pan(lat, lng)
+      moveToIP(lat, lng);
 
       var row1 = "<tr style=\x22text-align:center\x22>" + "<td>" + lat + "</td>" + "<td>" + lng + "</td>" + "<td>" + result.data.city_name + "</td>" + "<td>" + result.data.country_name + "</td></tr>";
       var row2 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.hostname + "</td>" + "<td>" + result.data.time_zone + "</td>" + "<td>" + result.data.postal_code + "</td>" + "<td>" + result.data.country_iso_code + "</td></tr>";
@@ -147,9 +154,6 @@
     }
   </script>
   <script type="text/babel" src="./index.js"></script>
-  <label>lat</label><input type="text" id="lat" />
-  <br/>
-  <label>lng</label><input type="text" id="lng" />
-  <input type="button" value="updateCenter" onclick="pan(60, 60)" />
+
   </body>
 </html>

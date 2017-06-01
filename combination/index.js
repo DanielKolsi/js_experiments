@@ -12,14 +12,22 @@ class IPForm extends React.Component {
     this.setState({value: event.target.value});
   }
 
+
   handleSubmit(event) {
 
-    $('[data-first]').show();
-    $('[data-second]').show();
-    $('[data-third]').show();
-    //document.getElementById("lat").value, document.getElementById("lng").value);
-    getLocationByIP(this.state.value);
-    event.preventDefault();
+    var pattern = /^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/; // IP validating pattern
+    if (!pattern.test(this.state.value)) {
+      alert('Invalid IP = ' + this.state.value);
+      return;
+    } else {
+
+      $('[data-first]').show();
+      $('[data-second]').show();
+      $('[data-third]').show();
+      getLocationByIP(this.state.value);
+      event.preventDefault();
+
+    }
   }
 
   removeTable() {
