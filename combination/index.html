@@ -108,14 +108,24 @@
       marker.setPosition(point);
     }
 
+
   </script>
-    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU&callback=initialize'
+
+  <script type="text/javascript" async defer>
+
+      JSElement = document.createElement('script');
+      JSElement.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU&callback=initialize';
+
+      document.getElementsByTagName('head')[0].appendChild(JSElement);
+
+  </script>
+
+  <!--script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU&callback=initialize'
     async defer>
-  </script>
+  </script-->
 
   <script type="text/javascript">
     $(document).ready(function() {
-
     });
 
 

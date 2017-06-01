@@ -1,11 +1,11 @@
-var http = require('http');
+
 var request = require("request");
 var url = "https://ipvigilante.com/json/8.8.8.8";
 var country = "country-x";
 var querystring = require('querystring');
+var https = require('https');
 
 'use strict';
-var https = require('https');
 
 module.exports = function (request, response) {
 
@@ -21,7 +21,6 @@ var ip_string = url.substr(4);
     }
 
     options.path = "/"+ip_string+"/full";
-
 
     var req = https.get(options, function(res){
         var body = "";
@@ -41,7 +40,6 @@ var ip_string = url.substr(4);
             } else {
               console.log('Status:', res.statusCode);
           }
-
         });
       });
     req.on('error', function(e) {

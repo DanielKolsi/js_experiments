@@ -6,9 +6,7 @@ var serveStaticFiles = require('ecstatic')({ root: './'});
 
 http.createServer(function (req, res) {
 
- // parse params
-
-   if (req.url.indexOf('/ip') === 0) {        
+   if (req.url.indexOf('/ip') === 0) {
         return require('./http-ip')(req, res); // returns EXPORT
     }
 
@@ -16,4 +14,4 @@ http.createServer(function (req, res) {
 }).listen(port);
 
 
-console.log('Listening on http://localhost:%d', port);
+console.log('Listening on http://127.0.0.1:%d', port);
