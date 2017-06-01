@@ -1,7 +1,7 @@
 
 // server URLs etc.
 var SERVER_URL = 'http://127.0.0.1:8000/ip/';
-
+var IPVIGILANTE_URL = 'https://ipvigilante.com/json/8.8.8.8';
 
 // sensitive keys & passwords
 var API_KEY = 'AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU';
@@ -21,4 +21,4 @@ var INIT_LNG = 40;
 // error messages
 
 var INVALID_IP = 'Invalid IP = ';
-var SERVER_ERROR = 'Server error, server URL was: '';
+var SERVER_ERROR = 'Server error, server URL was: ';

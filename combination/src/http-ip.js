@@ -1,6 +1,6 @@
 
 var request = require("request");
-var url = "https://ipvigilante.com/json/8.8.8.8";
+var url = 'https://ipvigilante.com/json/8.8.8.8'; // TODO, remove?!
 var country = "country-x";
 var querystring = require('querystring');
 var https = require('https');

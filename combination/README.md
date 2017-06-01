@@ -27,3 +27,6 @@ TODO
 * remove hard coding (IPs etc.)
 * server side config?!
 * check package.json & correct dependencies (versions!)
+
+http://eloquentjavascript.net/
+https://medium.com/javascript-scene/reduce-composing-software-fe22f0c39a1d
