@@ -70,6 +70,10 @@
   <br>
   <div id="ip-map"></div>
   <script>
+
+  $(document).ready(function() {
+  });
+
     var map;
     var marker;
 
@@ -97,46 +101,29 @@
       marker.setPosition(point);
     }
 
-    function moveToIP(lat, lng) {
-      var point = new google.maps.LatLng(lat, lng);
-      map.panTo(point);
-      marker.setPosition(point);
-    }
-  </script>
-
-
-
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-    });
-
-
     getLocationByIP = function(ip) {
 
       $.ajax({
         type: "GET",
-        dataType: "text", // JSON
-        url: SERVER_URL + "/ip/" + ip,
+        dataType: "json",
+        url: SERVER_URL + ip,
 
         success: function(data) {
           mapIP(data);
         },
         error: function(err) {
-          alert('Incorrect IP: ' + SERVER_URL + " error = " + err);
-          console.log("url_error=" + SERVER_URL);
-          console.log("error=" + err);
+          alert(SERVER_ERROR + SERVER_URL);
         }
       });
     };
 
-    function mapIP(data) {
-
-      var result = JSON.parse(data);
+    function mapIP(result) {
 
       lat = result.data.latitude;
       lng = result.data.longitude;
-      moveToIP(lat, lng);
+      var point = new google.maps.LatLng(lat, lng);
+      map.panTo(point);
+      marker.setPosition(point);
 
       var row1 = "<tr style=\x22text-align:center\x22>" + "<td>" + lat + "</td>" + "<td>" + lng + "</td>" + "<td>" + result.data.city_name + "</td>" + "<td>" + result.data.country_name + "</td></tr>";
       var row2 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.hostname + "</td>" + "<td>" + result.data.time_zone + "</td>" + "<td>" + result.data.postal_code + "</td>" + "<td>" + result.data.country_iso_code + "</td></tr>";

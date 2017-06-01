@@ -17,7 +17,7 @@ class IPForm extends React.Component {
 
     var pattern = /^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/; // IP validating pattern
     if (!pattern.test(this.state.value)) {
-      alert('Invalid IP = ' + this.state.value);
+      alert(INVALID_IP + this.state.value);
       return;
     } else {
       $('[data-first]').show();
