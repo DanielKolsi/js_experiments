@@ -1,5 +1,6 @@
 
-Combines multiple Javascript libraries + technics
+Combines multiple Javascript libraries + technics, e.g.
+ReactJS, Express, Node, Babel..
 
 * ExpressJS
 * EmberJS
@@ -26,6 +27,7 @@ TODO
 * UI fixes, hide table headers etc.
 * remove hard coding (IPs etc.)
 * server side config?!
+* Mocha + Chai: https://github.com/DanielKolsi/node-mocha-chai-tutorial/blob/master/test/test-server.js
 * check package.json & correct dependencies (versions)
 * Babel (production version)
 * arrow functions (to tests?)

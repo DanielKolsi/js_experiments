@@ -82,7 +82,6 @@ var Globals = (function() {
 
 (function() {
 
-
   initialize = function() {
     var mapOptions = {
       zoom: MAP_ZOOM_LEVEL,
@@ -111,6 +110,9 @@ var IPMapper = (function() {
       Globals.map.panTo(point);
       Globals.marker.setPosition(point);
       Globals.marker.setLabel("");
+      //Globals.marker.setDraggable(true);
+      //Globals.marker.setAnimation(google.maps.Animation.DROP);
+
     }
 
     module.getLocationByIP = function(ip) {
