@@ -6,6 +6,17 @@ body,
   width: 99%;
   height: 85%;
 }
+body {
+    background-color: rgb(245,245,220);
+}
+
+h3 {
+    background-color: rgb(106, 90, 205);
+}
+
+p {
+    background-color: rgb(205, 92, 92);
+}
 
 table {
 		border-collapse: collapse;
@@ -21,3 +32,4 @@ table {
   }
 
   tr:nth-child(even){background-color: #f2f2f2}
+  tr:nth-child(odd){background-color: #ffffff}

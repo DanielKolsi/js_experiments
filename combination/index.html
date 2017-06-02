@@ -5,7 +5,7 @@
   <title>IP to location data mapper (Combination)</title>
 
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script type="text/javascript" src="src/config.js"></script>
+  <script type="text/javascript" src="config/config.js"></script>
   <script src="https://unpkg.com/react@15.3.0/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.js"></script>
   <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
@@ -22,11 +22,7 @@
 
   <div id="content">
   </div>
-  <div id="latLong">
-    <label> Latitude: </label><input type="text" id="lat" />
-    <label> Longitude: </label><input type="text" id="lng" />
-    <input type="button" value="Set marker" onclick="pan()" />
-  </div>
+
 
   <div data-first="dataTable1">
 
@@ -66,7 +62,11 @@
       </tbody>
     </table>
   </div>
-
+  <div id="latLong">
+    <label> Latitude: </label><input type="text" id="lat" />
+    <label> Longitude: </label><input type="text" id="lng" />
+    <input type="button" value="Set marker" onclick="pan()" />
+  </div>
   <br>
   <div id="ip-map"></div>
   <script>
@@ -88,7 +88,7 @@
 
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(INIT_LAT, INIT_LNG),
-          title:"IP Point"
+          label: "[INITIAL LOCATION]"
         });
 
       marker.setMap(map);
@@ -109,7 +109,7 @@
         url: SERVER_URL + ip,
 
         success: function(data) {
-          mapIP(data);
+          mapIP(data, ip);
         },
         error: function(err) {
           alert(SERVER_ERROR + SERVER_URL);
@@ -117,13 +117,14 @@
       });
     };
 
-    function mapIP(result) {
+    function mapIP(result, ip) {
 
       lat = result.data.latitude;
       lng = result.data.longitude;
       var point = new google.maps.LatLng(lat, lng);
       map.panTo(point);
       marker.setPosition(point);
+      marker.setLabel(ip);
 
       var row1 = "<tr style=\x22text-align:center\x22>" + "<td>" + lat + "</td>" + "<td>" + lng + "</td>" + "<td>" + result.data.city_name + "</td>" + "<td>" + result.data.country_name + "</td></tr>";
       var row2 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.hostname + "</td>" + "<td>" + result.data.time_zone + "</td>" + "<td>" + result.data.postal_code + "</td>" + "<td>" + result.data.country_iso_code + "</td></tr>";
