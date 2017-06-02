@@ -26,7 +26,9 @@ TODO
 * UI fixes, hide table headers etc.
 * remove hard coding (IPs etc.)
 * server side config?!
-* check package.json & correct dependencies (versions!)
+* check package.json & correct dependencies (versions)
+* Babel (production version)
+* arrow functions (to tests?)
 
 http://eloquentjavascript.net/
 https://medium.com/javascript-scene/reduce-composing-software-fe22f0c39a1d

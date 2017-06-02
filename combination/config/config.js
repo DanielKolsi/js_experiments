@@ -14,7 +14,7 @@ var CITY = 'City';
 var COUNTRY = 'Country';
 
 // map constants
-var MAP_ZOOM_LEVEL = 7;
+var MAP_ZOOM_LEVEL = 9;
 var INIT_LAT = 40;
 var INIT_LNG = 40;
 
@@ -22,3 +22,6 @@ var INIT_LNG = 40;
 
 var INVALID_IP = 'Invalid IP = ';
 var SERVER_ERROR = 'Server error, server URL was: ';
+
+// other
+var PATTERN = /^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/;
