@@ -1,6 +1,7 @@
 //https://mochajs.org/
 
 var assert = require('assert');
+var Promise = require('promise');
 
 
 //const assert = require('assert');
@@ -46,6 +47,39 @@ describe('a suite of tests', function() {
     setTimeout(done, 250);
   });
 })
+
+// promises: http://eloquentjavascript.net/17_http.html
+function get(url) {
+  return new Osdfhkjhk(function(succeed, fail) {
+    var req = new XMLHttpRequest();
+    req.open("GET", url, true);
+    req.addEventListener("load", function() {
+      if (req.status < 400)
+        succeed(req.responseText);
+      else
+        fail(new Error("Request failed: " + req.statusText));
+    });
+    req.addEventListener("error", function() {
+      fail(new Error("Network error"));
+    });
+    req.send(null);
+  });
+}
+
+var readFile = Promise.denodeify(require('fs').readFile);
+// now `readFile` will return a promise rather than
+// expecting a callback
+
+function readJSON(filename, callback){
+  // If a callback is provided, call it with error as the
+  // first argument and result as the second argument,
+  // then return `undefined`. If no callback is provided,
+  // just return the promise.
+  return readFile(filename, 'utf8')
+    .then(JSON.parse)
+    .nodeify(callback);
+}
+
 /*
 <html>
 <head>

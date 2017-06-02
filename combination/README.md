@@ -2,8 +2,7 @@
 Combines multiple Javascript libraries + technics, e.g.
 ReactJS, Express, Node, Babel..
 
-* ExpressJS
-* EmberJS
+* ExpressJS, ReactJS
 * Promises: https://davidwalsh.name/promises
 * callbacks (async)
 * catch & error handling
@@ -22,7 +21,7 @@ TODO
 * config ++
 * directory structure check
 * tests
-* check error handling (try/catch etc.)
+* check error handling (try/c20atch etc.)
 * comments
 * UI fixes, hide table headers etc.
 * remove hard coding (IPs etc.)

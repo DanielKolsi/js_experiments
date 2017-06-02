@@ -5,9 +5,9 @@ var serveStaticFiles = require('ecstatic')({ root: './'});
 
 var express = require('express');
 var app = express();
+var IP = '/ip'; // '/ip' path from URL
 var position = 0;
 var DEBUG = false;
-
 
 if (DEBUG) { // for logging & tracing requests
   app.use(function(request, response, next) {
@@ -16,11 +16,12 @@ if (DEBUG) { // for logging & tracing requests
   });
 }
 
-
+// just for testing Express routing & response text
 app.get("/About", function(request, response) {
   response.end("(C) Daniel Kolsi - All rights reversed.");
 });
 
+// just for testing Express routing & redirection to a web page
 app.get("/Help", function(request, response) {
   response.redirect("http://www.faceop.com");
 });
@@ -28,7 +29,7 @@ app.get("/Help", function(request, response) {
 // Express middleware
 app.use(function(request, response) {
 
-  if (request.url.indexOf('/ip') === position) {
+  if (request.url.indexOf(IP) === position) {
        return require('./http-ip')(request, response); // returns EXPORT
    }
    serveStaticFiles(request, response);

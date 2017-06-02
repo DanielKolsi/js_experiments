@@ -5,6 +5,7 @@
   <title>IP to location data mapper (Combination)</title>
 
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="config/sensitive.js"></script>
   <script type="text/javascript" src="config/config.js"></script>
   <script src="https://unpkg.com/react@15.3.0/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15.3.0/dist/react-dom.js"></script>
@@ -28,8 +29,8 @@
     <br>
     <table width="100%" id="IPTable1" border="1">
       <thead>
-        <th>Latitude</th>
-        <th>Longitude</th>
+        <th>&#127760; Latitude</th>
+        <th>&#127760; Longitude</th>
         <th>City</th>
         <th>Country</th>
       </thead>
@@ -113,7 +114,6 @@
         Globals.marker.setLabel("");
         Globals.marker.setDraggable(true);
         Globals.marker.setAnimation(google.maps.Animation.DROP);
-
       }
 
       module.getLocationByIP = function(ip) {
@@ -131,6 +131,24 @@
           }
         });
       };
+
+      function get(url) {
+        return new Osdfhkjhk(function(succeed, fail) {
+          var req = new XMLHttpRequest();
+          req.open("GET", url, true);
+          req.addEventListener("load", function() {
+            if (req.status < 400)
+              succeed(req.responseText);
+            else
+              fail(new Error("Request failed: " + req.statusText));
+          });
+          req.addEventListener("error", function() {
+            fail(new Error("Network error"));
+          });
+          req.send(null);
+        });
+      }
+
 
       function mapIP(result, ip) {
         "use strict";

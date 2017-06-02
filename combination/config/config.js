@@ -3,10 +3,6 @@
 var SERVER_URL = 'http://127.0.0.1:8000/ip/';
 var IPVIGILANTE_URL = 'https://ipvigilante.com/json/8.8.8.8';
 
-// sensitive keys & passwords
-var API_KEY = 'AIzaSyBjmdHr9PZaOoSyLNHd4gJMb1aF2VSJbqU';
-
-
 // table constants
 var LAT = 'Latitude';
 var LNG = 'Longitude';
