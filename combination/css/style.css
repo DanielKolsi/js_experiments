@@ -1,39 +1,45 @@
-html,
-body,
-#ip-map {
+html, body, #ip-map {
   margin: 5;
   padding: 10;
   width: 99%;
   height: 85%;
 }
+
 body {
-    background-color: rgb(245,245,220);
+  background-color: rgb(245, 245, 220);
 }
 
 h3 {
-    background-color: rgb(106, 90, 205);
+  background-color: rgb(106, 90, 205);
 }
 
 p {
-    background-color: rgb(205, 92, 92);
+  background-color: rgb(205, 92, 92);
 }
 
 table {
-		border-collapse: collapse;
-		width: 100%;
-}
-  th{
-	 padding: 15px;
-	 background-color: #cccccc;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-  td {
-	 padding: 6px;
-  }
-  tr {
-    text-align:center;
-    font-size: 110%;
-  }
+th {
+  padding: 15px;
+  background-color: #cccccc;
+}
 
-  tr:nth-child(even){background-color: #f2f2f2}
-  tr:nth-child(odd){background-color: #ffffff}
+td {
+  padding: 6px;
+}
+
+tr {
+  text-align: center;
+  font-size: 110%;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff
+}
