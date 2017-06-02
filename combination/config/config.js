@@ -12,6 +12,7 @@ var LAT = 'Latitude';
 var LNG = 'Longitude';
 var CITY = 'City';
 var COUNTRY = 'Country';
+var INITIAL_LOCATION = '[INITIAL LOCATION]';
 
 // map constants
 var MAP_ZOOM_LEVEL = 9;

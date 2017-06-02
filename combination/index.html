@@ -93,7 +93,7 @@ var Globals = (function() {
 
       Globals.marker = new google.maps.Marker({
         position: new google.maps.LatLng(INIT_LAT, INIT_LNG),
-        label: "[INITIAL LOCATION]"
+        label: INITIAL_LOCATION
       });
 
     Globals.marker.setMap(Globals.map);
@@ -110,8 +110,8 @@ var IPMapper = (function() {
       Globals.map.panTo(point);
       Globals.marker.setPosition(point);
       Globals.marker.setLabel("");
-      //Globals.marker.setDraggable(true);
-      //Globals.marker.setAnimation(google.maps.Animation.DROP);
+      Globals.marker.setDraggable(true);
+      Globals.marker.setAnimation(google.maps.Animation.DROP);
 
     }
 
@@ -140,9 +140,9 @@ var IPMapper = (function() {
       Globals.marker.setPosition(point);
       Globals.marker.setLabel(ip);
 
-      var row1 = "<tr style=\x22text-align:center\x22>" + "<td>" + lat + "</td>" + "<td>" + lng + "</td>" + "<td>" + result.data.city_name + "</td>" + "<td>" + result.data.country_name + "</td></tr>";
-      var row2 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.hostname + "</td>" + "<td>" + result.data.time_zone + "</td>" + "<td>" + result.data.postal_code + "</td>" + "<td>" + result.data.country_iso_code + "</td></tr>";
-      var row3 = "<tr style=\x22text-align:center\x22>" + "<td>" + result.data.continent_code + "</td>" + "<td>" + result.data.continent_name + "</td>" + "<td>" + result.data.metro_code + "</td>" + "<td>" + result.data.accuracy_radius + "</td></tr>";
+      var row1 = "<tr><td>" + lat + "</td><td>" + lng + "</td><td>" + result.data.city_name + "</td><td>" + result.data.country_name + "</td></tr>";
+      var row2 = "<tr><td>" + result.data.hostname + "</td><td>" + result.data.time_zone + "</td><td>" + result.data.postal_code + "</td><td>" + result.data.country_iso_code + "</td></tr>";
+      var row3 = "<tr><td>" + result.data.continent_code + "</td><td>" + result.data.continent_name + "</td><td>" + result.data.metro_code + "</td><td>" + result.data.accuracy_radius + "</td></tr>";
       $(row1).appendTo("#IPTable1 tbody");
       $(row2).appendTo("#IPTable2 tbody");
       $(row3).appendTo("#IPTable3 tbody");
