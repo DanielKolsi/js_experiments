@@ -1,7 +1,7 @@
 
 
-This application maps a given user input IP to a geographical location and provides
-additional information to a table from the IP. This service user Google Maps and
+This application maps a given user input IP address (internet protocol) to a geographical location
+and provides additional information to a table from the IP. This service user Google Maps and
 another third party service (ipvigilante.com) to provide IP related data.
 
 User can also give a latitude and longitude values and add a marker to the map to

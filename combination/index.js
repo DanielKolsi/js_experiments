@@ -41,11 +41,11 @@ class IPForm extends React.Component {
 
         <form onSubmit={this.handleSubmit}>
           <label>
-            IP:
+            IP address:
             <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
 
-          <input type="submit" value=" map IP " />
+          <input type="submit" value={MAP_IP_TEXT} />
         </form>
         <button onClick={this.removeTable}>Remove table</button>
 

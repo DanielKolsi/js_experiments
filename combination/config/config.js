@@ -22,3 +22,4 @@ var SERVER_ERROR = 'Server error, server URL was: ';
 
 // other
 var PATTERN = /^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/;
+var MAP_IP_TEXT = " Find location & data ";

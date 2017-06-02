@@ -1,4 +1,3 @@
-var request = require("request");
 
 var country = "country-x";
 var querystring = require('querystring');

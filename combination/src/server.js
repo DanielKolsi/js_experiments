@@ -1,7 +1,6 @@
-
-
 var http = require('http');
 var serveStaticFiles = require('ecstatic')({ root: './'});
+
 var express = require('express');
 var app = express();
 
@@ -9,6 +8,7 @@ var port = 8000;
 var IP = '/ip'; // '/ip' path from URL
 var position = 0;
 var DEBUG = false;
+
 
 if (DEBUG) { // for logging & tracing requests
   app.use(function(request, response, next) {
@@ -22,7 +22,7 @@ app.get("/About", function(request, response) {
   response.end("(C) Daniel Kolsi - All rights reversed.");
 });
 
-// just for testing Express routing & redirection to a web page
+// just for testing Express routing & redirect to a new page
 app.get("/Help", function(request, response) {
   response.redirect("http://www.faceop.com");
 });
