@@ -18,11 +18,10 @@ class IPForm extends React.Component {
     if (!PATTERN.test(this.state.value)) { // PATTERN = IP validation regexp pattern
       alert(INVALID_IP + this.state.value);
     } else {
-
       $('[data-first]').show();
       $('[data-second]').show();
       $('[data-third]').show();
-      IPMapper.getLocationByIP(this.state.value);
+      IPMapper.getResultDataForIP(this.state.value); // maps IP to the geographical map
       event.preventDefault();
     }
   }

@@ -14,7 +14,6 @@ it('should complete this test', function (done) {
     .then(done);
 });
 
-
 describe('hooks', function() {
 
   before(function() {
@@ -78,6 +77,19 @@ function readJSON(filename, callback){
   return readFile(filename, 'utf8')
     .then(JSON.parse)
     .nodeify(callback);
+}
+
+function readFile(file) {
+  return new Promise(function(succeed, fail) {
+    var reader = new FileReader();
+    reader.addEventListener("load", function() {
+      succeed(reader.result);
+    });
+    reader.addEventListener("error", function() {
+      fail(reader.error);
+    });
+    reader.readAsText(file);
+  });
 }
 
 /*

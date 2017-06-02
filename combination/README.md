@@ -1,4 +1,45 @@
 
+
+This application maps a given user input IP to a geographical location and provides
+additional information to a table from the IP. This service user Google Maps and
+another third party service (ipvigilante.com) to provide IP related data.
+
+User can also give a latitude and longitude values and add a marker to the map to
+correspond that position.
+
+
+* Used technologies explained *
+
+Server side
+
+In addition to this functionality, the purpose of this small application is to
+show how different Javascript technics, frameworks and libraries play together.
+
+The server side uses Node framework + Express and Ecstatic Node module to read
+and serve static files.
+
+Client side
+
+The client side uses Javascript (+AJAX), JQuery, ReactJS (+Babel), JSON and CSS.
+
+
+Main folder structure
+
+ index.html
+ index.js
+ package.json
+ -- config // constants, server URLs etc.
+ -- css
+ -- src  // server side
+ -- test // unit test suite related code & config
+
+Unit testing suite
+
+The unit test suite uses Mocha and Chai. Promises is used for testing
+asynchronous code.
+
+
+-----------------
 Combines multiple Javascript libraries + technics, e.g.
 ReactJS, Express, Node, Babel..
 

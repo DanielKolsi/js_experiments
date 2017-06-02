@@ -1,10 +1,11 @@
-var http = require('http');
-var ecstatic = require('ecstatic');
-var port = 8000;
-var serveStaticFiles = require('ecstatic')({ root: './'});
 
+
+var http = require('http');
+var serveStaticFiles = require('ecstatic')({ root: './'});
 var express = require('express');
 var app = express();
+
+var port = 8000;
 var IP = '/ip'; // '/ip' path from URL
 var position = 0;
 var DEBUG = false;

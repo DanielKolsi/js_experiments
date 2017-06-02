@@ -10,12 +10,12 @@ module.exports = function (request, response) {
 
 var url = request.url;
 var POS = 4; // correct IP string starting position from URL
-var DATA_FORMAT = "full"; // full or partial (ipvigilante API)
 var ip_string = url.substr(POS);
+
+var DATA_FORMAT = "full"; // full or partial (ipvigilante API)
 
   var options = {
     host: 'ipvigilante.com',
-    path: '',
     port : 443,
     method : 'GET',
     headers: {'User-Agent': 'request'}

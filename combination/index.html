@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>IP to location data mapper (Combination)</title>
 
@@ -116,7 +115,7 @@
         Globals.marker.setAnimation(google.maps.Animation.DROP);
       }
 
-      module.getLocationByIP = function(ip) {
+      module.getResultDataForIP = function(ip) {
 
         $.ajax({
           type: "GET",
@@ -131,24 +130,6 @@
           }
         });
       };
-
-      function get(url) {
-        return new Osdfhkjhk(function(succeed, fail) {
-          var req = new XMLHttpRequest();
-          req.open("GET", url, true);
-          req.addEventListener("load", function() {
-            if (req.status < 400)
-              succeed(req.responseText);
-            else
-              fail(new Error("Request failed: " + req.statusText));
-          });
-          req.addEventListener("error", function() {
-            fail(new Error("Network error"));
-          });
-          req.send(null);
-        });
-      }
-
 
       function mapIP(result, ip) {
         "use strict";
@@ -173,5 +154,4 @@
   <script type="text/babel" src="./index.js"></script>
 
 </body>
-
 </html>
