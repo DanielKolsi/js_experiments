@@ -1,6 +1,5 @@
-
 var request = require("request");
-var url = 'https://ipvigilante.com/json/8.8.8.8'; // TODO, remove?!
+
 var country = "country-x";
 var querystring = require('querystring');
 var https = require('https');
@@ -10,7 +9,9 @@ var https = require('https');
 module.exports = function (request, response) {
 
 var url = request.url;
-var ip_string = url.substr(4);
+var POS = 4; // correct IP string starting position from URL
+var DATA_FORMAT = "full"; // full or partial (ipvigilante API)
+var ip_string = url.substr(POS);
 
   var options = {
     host: 'ipvigilante.com',
@@ -20,7 +21,7 @@ var ip_string = url.substr(4);
     headers: {'User-Agent': 'request'}
     }
 
-    options.path = "/"+ip_string+"/full";
+    options.path = "/"+ip_string+"/"+DATA_FORMAT;
 
     var req = https.get(options, function(res){
         var body = "";

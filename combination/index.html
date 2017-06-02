@@ -15,9 +15,9 @@
 
 <body>
   <script type="text/javascript" async defer>
-      JSElement = document.createElement('script');
-      JSElement.src = 'https://maps.googleapis.com/maps/api/js?key='+API_KEY+'&callback=initialize';
-      document.getElementsByTagName('head')[0].appendChild(JSElement);
+    JSElement = document.createElement('script');
+    JSElement.src = 'https://maps.googleapis.com/maps/api/js?key=' + API_KEY + '&callback=initialize';
+    document.getElementsByTagName('head')[0].appendChild(JSElement);
   </script>
 
   <div id="content">
@@ -69,89 +69,91 @@
   <br>
   <div id="ip-map"></div>
   <script>
+    //$(document).ready(function() {});
 
-  $(document).ready(function() {
-  });
+    var Globals = (function() {
+      "use strict";
+      var module = {};
+      module.map = null;
+      module.marker = null;
+      return module;
+    }());
 
-var Globals = (function() {
-  	var module = {};
-    module.map = null;
-    module.marker = null;
-    return module;
-}());
+    (function() {
 
-(function() {
+      initialize = function() {
+        "use strict";
+        var mapOptions = {
+          zoom: MAP_ZOOM_LEVEL,
+          center: new google.maps.LatLng(INIT_LAT, INIT_LNG),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        Globals.map = new google.maps.Map(document.getElementById('ip-map'),
+          mapOptions);
 
-  initialize = function() {
-    var mapOptions = {
-      zoom: MAP_ZOOM_LEVEL,
-      center: new google.maps.LatLng(INIT_LAT, INIT_LNG),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    Globals.map = new google.maps.Map(document.getElementById('ip-map'),
-      mapOptions);
+        Globals.marker = new google.maps.Marker({
+          position: new google.maps.LatLng(INIT_LAT, INIT_LNG),
+          label: INITIAL_LOCATION
+        });
 
-      Globals.marker = new google.maps.Marker({
-        position: new google.maps.LatLng(INIT_LAT, INIT_LNG),
-        label: INITIAL_LOCATION
-      });
+        Globals.marker.setMap(Globals.map);
+        google.maps.event.addDomListener(window, 'load', initialize);
+      }
+    })();
 
-    Globals.marker.setMap(Globals.map);
-    google.maps.event.addDomListener(window, 'load', initialize);
-  }
-})();
+    var IPMapper = (function() {
+      "use strict";
+      var module = {};
 
-var IPMapper = (function() {
-    var module = {};
+      module.pan = function() {
 
-    module.pan = function() {
+        var point = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value);
+        Globals.map.panTo(point);
+        Globals.marker.setPosition(point);
+        Globals.marker.setLabel("");
+        Globals.marker.setDraggable(true);
+        Globals.marker.setAnimation(google.maps.Animation.DROP);
 
-      var point = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value);
-      Globals.map.panTo(point);
-      Globals.marker.setPosition(point);
-      Globals.marker.setLabel("");
-      Globals.marker.setDraggable(true);
-      Globals.marker.setAnimation(google.maps.Animation.DROP);
+      }
 
-    }
+      module.getLocationByIP = function(ip) {
 
-    module.getLocationByIP = function(ip) {
+        $.ajax({
+          type: "GET",
+          dataType: "json",
+          url: SERVER_URL + ip,
 
-      $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: SERVER_URL + ip,
+          success: function(data) {
+            mapIP(data, ip);
+          },
+          error: function(err) {
+            alert(SERVER_ERROR + SERVER_URL);
+          }
+        });
+      };
 
-        success: function(data) {
-          mapIP(data, ip);
-        },
-        error: function(err) {
-          alert(SERVER_ERROR + SERVER_URL);
-        }
-      });
-    };
+      function mapIP(result, ip) {
+        "use strict";
+        var lat = result.data.latitude;
+        var lng = result.data.longitude;
+        var point = new google.maps.LatLng(lat, lng);
+        Globals.map.panTo(point);
+        Globals.marker.setPosition(point);
+        Globals.marker.setLabel(ip);
 
-    function mapIP(result, ip) {
+        var row1 = "<tr><td>" + lat + "</td><td>" + lng + "</td><td>" + result.data.city_name + "</td><td>" + result.data.country_name + "</td></tr>";
+        var row2 = "<tr><td>" + result.data.hostname + "</td><td>" + result.data.time_zone + "</td><td>" + result.data.postal_code + "</td><td>" + result.data.country_iso_code + "</td></tr>";
+        var row3 = "<tr><td>" + result.data.continent_code + "</td><td>" + result.data.continent_name + "</td><td>" + result.data.metro_code + "</td><td>" + result.data.accuracy_radius + "</td></tr>";
+        $(row1).appendTo("#IPTable1 tbody");
+        $(row2).appendTo("#IPTable2 tbody");
+        $(row3).appendTo("#IPTable3 tbody");
+      }
 
-      lat = result.data.latitude;
-      lng = result.data.longitude;
-      var point = new google.maps.LatLng(lat, lng);
-      Globals.map.panTo(point);
-      Globals.marker.setPosition(point);
-      Globals.marker.setLabel(ip);
-
-      var row1 = "<tr><td>" + lat + "</td><td>" + lng + "</td><td>" + result.data.city_name + "</td><td>" + result.data.country_name + "</td></tr>";
-      var row2 = "<tr><td>" + result.data.hostname + "</td><td>" + result.data.time_zone + "</td><td>" + result.data.postal_code + "</td><td>" + result.data.country_iso_code + "</td></tr>";
-      var row3 = "<tr><td>" + result.data.continent_code + "</td><td>" + result.data.continent_name + "</td><td>" + result.data.metro_code + "</td><td>" + result.data.accuracy_radius + "</td></tr>";
-      $(row1).appendTo("#IPTable1 tbody");
-      $(row2).appendTo("#IPTable2 tbody");
-      $(row3).appendTo("#IPTable3 tbody");
-    }
-
-    return module;
-  }());
+      return module;
+    }());
   </script>
   <script type="text/babel" src="./index.js"></script>
 
-  </body>
+</body>
+
 </html>

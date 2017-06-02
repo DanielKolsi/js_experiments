@@ -6,12 +6,16 @@ var serveStaticFiles = require('ecstatic')({ root: './'});
 var express = require('express');
 var app = express();
 var position = 0;
+var DEBUG = false;
 
-// for logging
-app.use(function(request, response, next) {
-  console.log("Request: " + request.method + " to URL: " + request.url);
-  next();
-});
+
+if (DEBUG) { // for logging & tracing requests
+  app.use(function(request, response, next) {
+    console.log("Request: " + request.method + " to URL: " + request.url);
+    next();
+  });
+}
+
 
 app.get("/About", function(request, response) {
   response.end("(C) Daniel Kolsi - All rights reversed.");
@@ -29,8 +33,6 @@ app.use(function(request, response) {
    }
    serveStaticFiles(request, response);
 });
-
-
 
 http.createServer(app).listen(port);
 console.log('Listening on http://127.0.0.1:%d', port);
