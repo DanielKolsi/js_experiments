@@ -9,7 +9,6 @@ var IP = '/ip'; // '/ip' path from URL
 var position = 0;
 var DEBUG = false;
 
-
 if (DEBUG) { // for logging & tracing requests
   app.use(function(request, response, next) {
     console.log("Request: " + request.method + " to URL: " + request.url);
@@ -35,6 +34,7 @@ app.use(function(request, response) {
    }
    serveStaticFiles(request, response);
 });
+
 
 http.createServer(app).listen(port);
 console.log('Listening on http://127.0.0.1:%d', port);

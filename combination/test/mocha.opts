@@ -1,1 +1,4 @@
---require test/test-init
+--recursive
+--colors
+--reporter list
+--require ./test/test-init

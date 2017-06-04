@@ -1,4 +1,4 @@
-
+var utils = require('./Utils');
 var country = "country-x";
 var querystring = require('querystring');
 var https = require('https');
@@ -37,7 +37,7 @@ var DATA_FORMAT = "full"; // full or partial (ipvigilante API)
            } catch (e) {
               console.log('Error parsing JSON!');
               }
-            } else {
+        } else {
               console.log('Status:', res.statusCode);
           }
         });
