@@ -1,5 +1,3 @@
-
-
 var Globals = (function() {
   "use strict";
   var module = {};
@@ -30,10 +28,6 @@ var Globals = (function() {
   }
 })();
 
-function test() {
-  console.log('testing..LOLA');
-}
-module.exports = test;
 
 var IPMapper = (function() {
   "use strict";
