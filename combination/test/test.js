@@ -12,7 +12,21 @@ var assert = require('assert');
 //const assert = require('assert');
 
 //var ip = require('../product/getResultDataForIP');
-var ip = require('../src/http-ip');
+var ip = require('../src/http-ip'); // http-ip
+
+describe('http-ip', function(done) {
+
+  it('test receiving the JSON data from IPVIGILANTE_URL', function(done) {
+  chai.request(server)
+    .get('/blobs')
+    .end(function(err, res){
+      res.should.have.status(200);
+      done();
+    });
+  });
+});
+
+
 var lola = require('../product/IPMapper');
 lola();
 
@@ -23,7 +37,7 @@ lola();
 //});
 
 
-ip(6, 4);
+//ip(6, 4);
 
 describe('mapIP', function() {
   it('panning...', function(done) {

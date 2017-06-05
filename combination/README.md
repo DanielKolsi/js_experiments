@@ -62,7 +62,7 @@ TODO
 * config ++
 * directory structure check
 * tests
-* check error handling (try/c20atch etc.)
+* check error handling (try/catch etc.)
 * comments
 * UI fixes, hide table headers etc.
 * remove hard coding (IPs etc.)
