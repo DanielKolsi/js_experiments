@@ -47,6 +47,9 @@ describe('http-ip', function(done) {
           res.body.should.be.a('object');
           //res.body.should.have.property('SUCCESS');
           res.should.have.property('text');
+          res.text.should.contain("postal_code");
+          console.log("RES_0"+res.text.city_name);
+          //res.text.data.should.property('city_name');
           //console.log(res.text.should.have("city_name"));
           //res.should.have.text(); // text/plain
           //res.should.be.json;
