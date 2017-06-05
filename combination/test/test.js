@@ -1,9 +1,12 @@
-//https://mochajs.org/
 
 var mocha = require('mocha');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-
+var chai = require('chai');
+var chaiHttp = require('chai-http');
+var server = require('../src/server');
+var should = chai.should();
+chai.use(chaiHttp);
 
 var Promise = require('es6-promise').Promise
 
@@ -16,15 +19,58 @@ var ip = require('../src/http-ip'); // http-ip
 
 describe('http-ip', function(done) {
 
-  it('test receiving the JSON data from IPVIGILANTE_URL', function(done) {
-  chai.request(server)
-    .get('/blobs')
-    .end(function(err, res){
-      res.should.have.status(200);
-      done();
+  it('request for Help page', function(done) {
+    chai.request(server)
+      .get('/Help')
+      .end(function(err, res){
+        res.should.have.status(200);
+        done();
+      });
     });
-  });
+    it('request for About page', function(done) {
+      chai.request(server)
+        .get('/About')
+        .end(function(err, res){
+          res.should.have.status(200);
+          done();
+        });
+    });
+    it('request for non-existent page', function(done) { // response: 404
+      chai.request(server)
+        .get('/Hello')
+        .end(function(err, res){
+          res.should.have.status(404);
+          done();
+        });
+    });
+    it('request for valid IP', function(done) { // add promise
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.should.have.status(200);
+          done();
+        });
+    });
+    it('request for invalid IP', function(done) { // add promise (time-out issue)
+      chai.request(server)
+        .get('/ip/232.1.45')
+        .end(function(err, res){
+          res.should.have.status(400);
+          done();
+        });
+    });
+    it('request for /', function(done) {
+      chai.request(server)
+        .get('/')
+        .end(function(err, res){
+
+          res.should.have.status(200);
+          done();
+        });
+    });
 });
+
+
 
 
 var lola = require('../product/IPMapper');

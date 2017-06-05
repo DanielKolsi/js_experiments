@@ -38,3 +38,4 @@ app.use(function(request, response) {
 
 http.createServer(app).listen(port);
 console.log('Listening on http://127.0.0.1:%d', port);
+module.exports = app;
