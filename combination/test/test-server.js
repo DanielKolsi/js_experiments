@@ -11,7 +11,6 @@ chai.use(chaiHttp);
 var assert = require('assert');
 
 
-
 describe('http-ip', function(done) {
 
   it('request for Help page', function(done) {
@@ -38,7 +37,7 @@ describe('http-ip', function(done) {
           done();
         });
     });
-    it('request for valid IP', function(done) {
+    it('request for valid IP & data labels', function(done) {
       chai.request(server)
         .get('/ip/8.8.8.8')
         .end(function(err, res){
@@ -49,17 +48,154 @@ describe('http-ip', function(done) {
           res.should.have.property('text');
           res.text.should.contain("postal_code");
           console.log("RES_0"+res.text.city_name);
-          //res.text.data.should.property('city_name');
-          //console.log(res.text.should.have("city_name"));
-          //res.should.have.text(); // text/plain
-          //res.should.be.json;
-          //res.body.should.be.a('array');
-          //res.body.SUCCESS.city_name.should.equal('Helsinki');
-          //res.data.city_name.should.have("jooop");
-          //result.data.city_name
           done();
         });
     });
+    it('request for valid IP & data content', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.should.have.status(200);
+          //console.log(res);
+          res.body.should.be.a('object');
+          //res.body.should.have.property('SUCCESS');
+          res.should.have.property('text');
+          res.text.should.contain("Mountain View"); // FIXME
+          console.log("RES_0"+res.text.city_name);
+
+          done();
+        });
+    });
+
+    it('data label_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data label_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data label_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data label_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data label_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data label_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data label_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data label_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data content_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data content_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data content_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data content_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data content_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data content_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data content_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+    it('data content_A', function(done) {
+      chai.request(server)
+        .get('/ip/8.8.8.8')
+        .end(function(err, res){
+          res.text.should.contain("Mountain View");
+          done();
+        });
+    });
+
     it('request for valid IP (Google.com)', function(done) {
       chai.request(server)
         .get('/ip/216.58.193.46')
