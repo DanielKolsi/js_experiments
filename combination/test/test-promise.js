@@ -1,31 +1,26 @@
-var mocha = require('mocha');
+console.log('test promise');
+
 var expect = require('chai').expect;
-var sinon = require('sinon');
-var chai = require('chai');
-var chaiHttp = require('chai-http');
 var server = require('../src/server');
-var should = chai.should();
+
 
 describe('Promises', function() {
 	before(function() {
-		//this does nothing but just an example
-		return Promise.resolve('foo').then(function() {
-			console.log("It's showtime");
+		//example of resolving a Promise
+		return Promise.resolve('resolve').then(function() {
+			console.log("Promise resolved...");
 		});
 	});
 
 	it('object comparison', function() {
 		var user = { first: 'John', last: 'Matrix' };
-
 		var p = Promise.resolve(user);
-
 		return expect(p).to.become(user);
 	});
 
 	it('property comparison', function() {
 		var name = 'Kindergarten Cop';
 		var movie = { name: name, year: 1990 };
-
 		var p = Promise.resolve(movie);
 
 		return expect(p.then(function(o) { return o.name; })).to.become(name);
@@ -56,15 +51,12 @@ describe('Promises', function() {
 	describe('rejected promises', function() {
 		it('with a message', function() {
 			var message = 'Rubber baby buggy bumpers';
-
 			var p = Promise.reject(message);
-
 			return expect(p).to.be.rejectedWith(message);
 		});
 
 		it('with a specific error type', function() {
 			var p = Promise.reject(new TypeError('Hey, christmas tree!'));
-
 			return expect(p).to.be.rejectedWith(TypeError);
 		});
 	});
