@@ -1,7 +1,11 @@
+
 console.log('test promise');
 
 var expect = require('chai').expect;
 var server = require('../src/server');
+var mapper = require('../product/IPMapper');
+
+
 
 
 describe('Promises', function() {
@@ -12,13 +16,22 @@ describe('Promises', function() {
 		});
 	});
 
-	it('object comparison', function() {
-		var user = { first: 'John', last: 'Matrix' };
-		var p = Promise.resolve(user);
-		return expect(p).to.become(user);
+
+  it('IPMapper test latitude', function() {
+    var IP = "http://127.0.0.1:8000/ip/8.8.8.8";
+    var result = mapper.getResultDataForIP(IP);
+    var lat = "xxxx";
+    var lng = "yyy";
+    var p1 = Promise.resolve(result.data.latitude);
+    var p2 = Promise.resolve(result.data.longitude);
+    return Promise.all([
+			expect(p1).to.become(lat),
+			expect(p2).to.become(lng)
+		]);
 	});
 
 	it('property comparison', function() {
+
 		var name = 'Kindergarten Cop';
 		var movie = { name: name, year: 1990 };
 		var p = Promise.resolve(movie);
@@ -61,19 +74,7 @@ describe('Promises', function() {
 		});
 	});
 
-	describe('with stubs', function() {
-	/*	it('return a resolved promise', function() {
-			var message = 'Who is your daddy, and what does he do?';
-			var stub = sinon.stub();
-			stub.resolves(message);
 
-      //var a = server.regresp(stub, message);
-			//var a = server(stub);
-      //var a = IPMapper.mapIP(5, 5);
-			var quote = a.talkToTheHand();
-
-			return expect(quote).to.become(message);
-		});*/
 
 		/*it('return a rejected promise', function() {
 			var message = "I'm the party pooper";
@@ -104,7 +105,7 @@ it('should complete this test', function (done) {
 
 */
 
-/*
+/* for testing hooks
 describe('hooks', function() {
 
   before(function() {
@@ -122,25 +123,23 @@ describe('hooks', function() {
   afterEach(function() {
     // runs after each test in this block
   });
-
-  // test cases
 });
+// testing different time-outs
+describe('test suite for time-outs', function() {
+  this.timeout(200);
 
-describe('a suite of tests', function() {
-  this.timeout(500);
-
-  it('should take less than 500ms', function(done){
-    setTimeout(done, 300);
+  it('takes always less than 500ms', function(done){
+    setTimeout(done, 500);
   });
 
-  it('should take less than 500ms as well', function(done){
-    setTimeout(done, 250);
+  it('will take more than 1500ms', function(done){
+    setTimeout(done, 2000);
   });
 })
 
 // promises: http://eloquentjavascript.net/17_http.html
 function get(url) {
-  return new Osdfhkjhk(function(succeed, fail) {
+  return new Promise(function(succeed, fail) {
     var req = new XMLHttpRequest();
     req.open("GET", url, true);
     req.addEventListener("load", function() {

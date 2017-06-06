@@ -78,3 +78,4 @@ var IPMapper = (function() {
 
   return module;
 }());
+module.exports = IPMapper;
