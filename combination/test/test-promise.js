@@ -1,11 +1,19 @@
 
 console.log('test promise');
 
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const { window } = new JSDOM(`<!DOCTYPE html>`);
+global.window = window;
+const $ = require('jQuery')(window);
+
+window.$ = require('jquery')(window);
+global.$ = require('jquery');
+global.$.ajax = require('jquery');
+
 var expect = require('chai').expect;
 var server = require('../src/server');
 var mapper = require('../product/IPMapper');
-
-
 
 
 describe('Promises test suite', function() {
@@ -18,10 +26,11 @@ describe('Promises test suite', function() {
 
 
   it('IPMapper test latitude', function() {
-    var IP = "http://127.0.0.1:8000/ip/8.8.8.8";
+    var IP = "http://127.0.0.1:8000/ip/8.8.8.8"; // https://ipinfo.io/8.8.8.8
     var result = mapper.getResultDataForIP(IP);
-    var lat = "xxxx";
-    var lng = "yyy";
+
+    var lat = "37.38600";
+    var lng = "-122.08380";
     var p1 = Promise.resolve(result.data.latitude);
     var p2 = Promise.resolve(result.data.longitude);
     return Promise.all([
@@ -30,31 +39,10 @@ describe('Promises test suite', function() {
 		]);
 	});
 
-	it('property comparison', function() {
 
-		var name = 'Kindergarten Cop';
-		var movie = { name: name, year: 1990 };
-		var p = Promise.resolve(movie);
-
-		return expect(p.then(function(o) { return o.name; })).to.become(name);
-	});
-
-	it('multiple promise assertions', function() {
-		var msg1 = 'You are not you';
-		var msg2 = 'You are me';
-
-		var p1 = Promise.resolve(msg1);
-		var p2 = Promise.resolve(msg2);
-
-		return Promise.all([
-			expect(p1).to.become(msg1),
-			expect(p2).to.become(msg2)
-		]);
-	});
-
-	it('comparing multiple promises', function() {
-		var p1 = Promise.resolve('Get up');
-		var p2 = Promise.resolve('Get down');
+	it('comparing promises (lat & lng)', function() {
+		var p1 = Promise.resolve('latitude');
+		var p2 = Promise.resolve('longitude');
 
 		return Promise.all([p1, p2]).then(function(values) {
 			expect(values[0]).to.not.equal(values[1]);
@@ -70,20 +58,20 @@ describe('Promises test suite', function() {
       var p2 = Promise.reject(new TypeError(message2));
       return Promise.all([
   			expect(p).to.be.rejectedWith(message),
-  			expect(p2).to.be.rejectedWith(TypeError);
+  			expect(p2).to.be.rejectedWith(TypeError)
   		]);
 		});
 	});
 
-
-
-		/*it('return a rejected promise (Sinon)', function() {
-			var message = "Reject me!";
+		/*it('return a rejected promise', function() {
+			var message = "I'm the party pooper";
 			var stub = sinon.stub();
 			stub.rejects(message);
-      var test = "test";
 
-			return expect(test).to.be.rejectedWith(message);
+			var a = arnold(stub);
+			var quote = a.talkToTheHand();
+
+			return expect(quote).to.be.rejectedWith(message);
 		});
 	});
 });*/

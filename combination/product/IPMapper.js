@@ -43,6 +43,21 @@ var IPMapper = (function() {
     Globals.marker.setAnimation(google.maps.Animation.DROP);
   }
 
+  module.getResultDataForFullIP = function(ip) {
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: ip,
+
+      success: function(data) {
+        mapIP(data, ip);
+      },
+      error: function(err) {
+        alert("error");
+      }
+    });
+  };
+
   module.getResultDataForIP = function(ip) {
 
     $.ajax({

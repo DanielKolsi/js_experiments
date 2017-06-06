@@ -13,7 +13,7 @@ var MAX_TIME = 10000; // normally 500ms is enough, but one test takes about 5000
 var assert = require('assert');
 
 
-/*describe('Test suite for server', function(done) {
+describe('Test suite for server', function(done) {
   this.timeout(MAX_TIME);
 
   it('request for Help page', function(done) {
@@ -191,4 +191,4 @@ var assert = require('assert');
           done();
         });
     });
-});*/
+});
