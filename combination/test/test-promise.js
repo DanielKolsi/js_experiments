@@ -8,7 +8,7 @@ var mapper = require('../product/IPMapper');
 
 
 
-describe('Promises', function() {
+describe('Promises test suite', function() {
 	before(function() {
 		//example of resolving a Promise
 		return Promise.resolve('resolve').then(function() {
@@ -60,34 +60,33 @@ describe('Promises', function() {
 			expect(values[0]).to.not.equal(values[1]);
 		});
 	});
+});
 
-	describe('rejected promises', function() {
-		it('with a message', function() {
-			var message = 'Rubber baby buggy bumpers';
+	describe('Test Promise rejection', function() {
+		it('with a rejection message', function() {
+			var message = 'This Promise was rejected.';
+      var message2 = 'And also this Promise was rejected with error.';
 			var p = Promise.reject(message);
-			return expect(p).to.be.rejectedWith(message);
-		});
-
-		it('with a specific error type', function() {
-			var p = Promise.reject(new TypeError('Hey, christmas tree!'));
-			return expect(p).to.be.rejectedWith(TypeError);
+      var p2 = Promise.reject(new TypeError(message2));
+      return Promise.all([
+  			expect(p).to.be.rejectedWith(message),
+  			expect(p2).to.be.rejectedWith(TypeError);
+  		]);
 		});
 	});
 
 
 
-		/*it('return a rejected promise', function() {
-			var message = "I'm the party pooper";
+		/*it('return a rejected promise (Sinon)', function() {
+			var message = "Reject me!";
 			var stub = sinon.stub();
 			stub.rejects(message);
+      var test = "test";
 
-			var a = arnold(stub);
-			var quote = a.talkToTheHand();
-
-			return expect(quote).to.be.rejectedWith(message);
-		});*/
+			return expect(test).to.be.rejectedWith(message);
+		});
 	});
-});
+});*/
 
 
 /*
