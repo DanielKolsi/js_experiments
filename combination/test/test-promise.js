@@ -27,7 +27,7 @@ describe('Promises test suite', function() {
 
   it('IPMapper test latitude', function() {
     var IP = "http://127.0.0.1:8000/ip/8.8.8.8"; // https://ipinfo.io/8.8.8.8
-    var result = mapper.getResultDataForIP(IP);
+    var result = mapper.getResultDataForIP(IP); // FIXME: use Sinon test doubles
 
     var lat = "37.38600";
     var lng = "-122.08380";

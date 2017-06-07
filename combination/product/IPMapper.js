@@ -43,20 +43,6 @@ var IPMapper = (function() {
     Globals.marker.setAnimation(google.maps.Animation.DROP);
   }
 
-  module.getResultDataForFullIP = function(ip) {
-    $.ajax({
-      type: "GET",
-      dataType: "json",
-      url: ip,
-
-      success: function(data) {
-        mapIP(data, ip);
-      },
-      error: function(err) {
-        alert("error");
-      }
-    });
-  };
 
   module.getResultDataForIP = function(ip) {
 
@@ -93,4 +79,4 @@ var IPMapper = (function() {
 
   return module;
 }());
-module.exports = IPMapper;
+//module.exports = IPMapper; // FIXME: requires WebPack / Browserify

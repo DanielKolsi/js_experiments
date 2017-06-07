@@ -26,6 +26,9 @@ class IPForm extends React.Component {
     }
   }
 
+  /*
+    Empties and/or removes tables or table headers from the HTML by user request.
+  */
   removeTable() {
     $('#IPTable1 tbody').empty();
     $('#IPTable2 tbody').empty();
@@ -41,7 +44,7 @@ class IPForm extends React.Component {
 
         <form onSubmit={this.handleSubmit}>
           <label>
-            IP address:
+            {IP_ADDR_TEXT}
             <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
 
