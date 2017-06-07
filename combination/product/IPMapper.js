@@ -6,8 +6,8 @@ var Globals = (function() {
   return module;
 }());
 
+// init Google maps used for mapping IP to geographical location
 (function() {
-
   initialize = function() {
     "use strict";
     var mapOptions = {
@@ -28,14 +28,18 @@ var Globals = (function() {
   }
 })();
 
+/*
 
+ Maps user given IP address to the geographical world map as a visible marker.
+*/
 var IPMapper = (function() {
   "use strict";
   var module = {};
 
+  // pans geographical map to correspond correct latitude and longitude values & sets the marker
   module.pan = function() {
 
-    var point = new google.maps.LatLng(document.getElementById("lat").value, document.getElementById("lng").value);
+    var point = new google.maps.LatLng(document.getElementById(LAT).value, document.getElementById(LNG).value);
     Globals.map.panTo(point);
     Globals.marker.setPosition(point);
     Globals.marker.setLabel("");
@@ -43,7 +47,7 @@ var IPMapper = (function() {
     Globals.marker.setAnimation(google.maps.Animation.DROP);
   }
 
-
+  // AJAX call to received and process JSON data corresponding the given IP
   module.getResultDataForIP = function(ip) {
 
     $.ajax({
@@ -52,7 +56,7 @@ var IPMapper = (function() {
       url: SERVER_URL + ip,
 
       success: function(data) {
-        mapIP(data, ip);
+        showResults(data, ip);
       },
       error: function(err) {
         alert(SERVER_ERROR + SERVER_URL);
@@ -60,7 +64,12 @@ var IPMapper = (function() {
     });
   };
 
-  function mapIP(result, ip) {
+  /*
+
+  Shows results of data corresponding the IP both in the map and in the HTML table.
+  The table contains three rows of additional data related to the IP address.
+  */
+  function showResults(result, ip) {
     "use strict";
     var lat = result.data.latitude;
     var lng = result.data.longitude;

@@ -179,7 +179,7 @@ describe('Test suite for server', function(done) {
       chai.request(server)
         .get('/ip/232.1.45')
         .end(function(err, res){
-          //res.should.have.status(400);
+          res.should.have.status(400);
           done();
         });
     });

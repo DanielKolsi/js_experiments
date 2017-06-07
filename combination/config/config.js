@@ -16,7 +16,6 @@ var INIT_LAT = 40;
 var INIT_LNG = 40;
 
 // error messages
-
 var INVALID_IP = 'Invalid IP = ';
 var SERVER_ERROR = 'Server error, server URL was: ';
 
@@ -24,3 +23,5 @@ var SERVER_ERROR = 'Server error, server URL was: ';
 var PATTERN = /^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/;
 var MAP_IP_TEXT = " Find location & data ";
 var IP_ADDR_TEXT = "IP address:";
+var LAT = "lat"; // latitude in ReactJS IPMapper
+var LNG = "lng"; // longitude in ReactJS IPMapper
