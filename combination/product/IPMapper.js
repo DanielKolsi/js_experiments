@@ -15,6 +15,9 @@ var Globals = (function() {
       center: new google.maps.LatLng(INIT_LAT, INIT_LNG),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+
+    var ipmap = $('[data-third]');
+
     Globals.map = new google.maps.Map(document.getElementById('ip-map'),
       mapOptions);
 
