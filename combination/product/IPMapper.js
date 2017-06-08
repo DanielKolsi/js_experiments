@@ -32,7 +32,6 @@ var Globals = (function() {
 })();
 
 /*
-
  Maps user given IP address to the geographical world map as a visible marker.
 */
 var IPMapper = (function() {
@@ -68,7 +67,6 @@ var IPMapper = (function() {
   };
 
   /*
-
   Shows results of data corresponding the IP both in the map and in the HTML table.
   The table contains three rows of additional data related to the IP address.
   */

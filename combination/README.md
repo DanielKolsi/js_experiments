@@ -7,9 +7,16 @@ another third party service (ipvigilante.com) to provide IP related data.
 User can also give a latitude and longitude values and add a marker to the map to
 correspond that position.
 
+====================================
+Running the application and testing
+====================================
+1) npm install
+2) npm start
+3) npm test
 
+====================================
 * Used technologies explained *
-
+====================================
 Server side
 
 In addition to this functionality, the purpose of this small application is to
@@ -25,11 +32,13 @@ The client side uses Javascript (+AJAX), JQuery, ReactJS (+Babel), JSON and CSS.
 
 Main folder structure
 
- index.html
- index.js
+ index.html  // starting point for http://127.0.0.1:8000/
+ index.js    // ReactJS UI + rendering functionality for input & table
  package.json
+
  -- config // constants, server URLs etc.
- -- css
+ -- css    // style sheet
+ -- product // client JS for AJAX & mapping IP to geo map etc.
  -- src  // server side
  -- test // unit test suite related code & config
 
