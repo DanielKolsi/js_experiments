@@ -16,8 +16,6 @@ var Globals = (function() {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    var ipmap = $('[data-third]');
-
     Globals.map = new google.maps.Map(document.getElementById('ip-map'),
       mapOptions);
 
@@ -28,7 +26,7 @@ var Globals = (function() {
 
     Globals.marker.setMap(Globals.map);
     google.maps.event.addDomListener(window, 'load', initialize);
-  }
+  };
 })();
 
 /*
@@ -47,7 +45,7 @@ var IPMapper = (function() {
     Globals.marker.setLabel("");
     Globals.marker.setDraggable(true);
     Globals.marker.setAnimation(google.maps.Animation.DROP);
-  }
+  };
 
   // AJAX call to received and process JSON data corresponding the given IP
   module.getResultDataForIP = function(ip) {
@@ -71,7 +69,7 @@ var IPMapper = (function() {
   The table contains three rows of additional data related to the IP address.
   */
   function showResults(result, ip) {
-    "use strict";
+
     var lat = result.data.latitude;
     var lng = result.data.longitude;
     var point = new google.maps.LatLng(lat, lng);
