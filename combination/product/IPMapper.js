@@ -80,9 +80,9 @@ var IPMapper = (function() {
     var row1 = "<tr><td>" + lat + "</td><td>" + lng + "</td><td>" + result.data.city_name + "</td><td>" + result.data.country_name + "</td></tr>";
     var row2 = "<tr><td>" + result.data.hostname + "</td><td>" + result.data.time_zone + "</td><td>" + result.data.postal_code + "</td><td>" + result.data.country_iso_code + "</td></tr>";
     var row3 = "<tr><td>" + result.data.continent_code + "</td><td>" + result.data.continent_name + "</td><td>" + result.data.metro_code + "</td><td>" + result.data.accuracy_radius + "</td></tr>";
-    $(row1).appendTo("#IPTable1 tbody");
-    $(row2).appendTo("#IPTable2 tbody");
-    $(row3).appendTo("#IPTable3 tbody");
+    $(row1).appendTo("[data-table1] tbody");
+    $(row2).appendTo("[data-table2] tbody");
+    $(row3).appendTo("[data-table3] tbody");
   }
 
   return module;

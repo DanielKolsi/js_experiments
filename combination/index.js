@@ -30,9 +30,9 @@ class IPForm extends React.Component {
     Empties and/or removes tables or table headers from the HTML by user request.
   */
   removeTable() {
-    $('#IPTable1 tbody').empty();
-    $('#IPTable2 tbody').empty();
-    $('#IPTable3 tbody').empty();
+    $('[data-table1] tbody').empty();
+    $('[data-table2] tbody').empty();
+    $('[data-table3] tbody').empty();
     $('[data-first]').hide();
     $('[data-second]').hide();
     $('[data-third]').hide();
