@@ -14,6 +14,7 @@ global.$.ajax = require('jquery');
 var expect = require('chai').expect;
 var server = require('../src/server');
 var mapper = require('../product/IPMapper');
+var sinon = require('sinon');
 
 
 describe('Promises test suite', function() {
@@ -25,9 +26,24 @@ describe('Promises test suite', function() {
 	});
 
 
+	it('IPMapper test with Sinon mock', function() {
+		var mockMapper = sinon.mock(mapper); // FIXME (Sinon test doubles)
+		var IP = "http://127.0.0.1:8000/ip/8.8.8.8"; // https://ipinfo.io/8.8.8.8
+		var result = mapper.getResultDataForIP(IP);
+
+		var lat = "37.38600";
+		var lng = "-122.08380";
+		var p1 = Promise.resolve(result.data.latitude);
+		var p2 = Promise.resolve(result.data.longitude);
+		return Promise.all([
+			expect(p1).to.become(lat),
+			expect(p2).to.become(lng)
+		]);
+	});
   it('IPMapper test latitude', function() {
+
     var IP = "http://127.0.0.1:8000/ip/8.8.8.8"; // https://ipinfo.io/8.8.8.8
-    var result = mapper.getResultDataForIP(IP); // FIXME: use Sinon test doubles
+    var result = mapper.getResultDataForIP(IP);
 
     var lat = "37.38600";
     var lng = "-122.08380";
@@ -63,18 +79,6 @@ describe('Promises test suite', function() {
 		});
 	});
 
-		/*it('return a rejected promise', function() {
-			var message = "I'm the party pooper";
-			var stub = sinon.stub();
-			stub.rejects(message);
-
-			var a = arnold(stub);
-			var quote = a.talkToTheHand();
-
-			return expect(quote).to.be.rejectedWith(message);
-		});
-	});
-});*/
 
 
 /*
