@@ -31,9 +31,11 @@ The client side uses Javascript (+AJAX), JQuery, ReactJS (+Babel), JSON and CSS.
 
 Main folder structure
 
- index.html  // starting point for http://127.0.0.1:8000/
- index.js    // ReactJS UI + rendering functionality for input & table
+ index.html    --  starting point for http://127.0.0.1:8000/
+ index.js      --  ReactJS UI + rendering functionality for input & table
  package.json
+
+Directory structure:
 
  -- config // constants, server URLs etc.
  -- css    // style sheet
