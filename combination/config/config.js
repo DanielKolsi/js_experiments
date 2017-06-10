@@ -3,7 +3,7 @@
 var SERVER_URL = 'http://127.0.0.1:8000/ip/';
 var IPVIGILANTE_URL = 'https://ipvigilante.com/json/8.8.8.8';
 
-// table constants
+// table constants / texts
 var LAT = 'Latitude';
 var LNG = 'Longitude';
 var CITY = 'City';
@@ -20,8 +20,8 @@ var INVALID_IP = 'Invalid IP = ';
 var SERVER_ERROR = 'Server error, server URL was: ';
 
 // other
-var PATTERN = /^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/;
+var PATTERN = /^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/; // for regexp matching
 var MAP_IP_TEXT = " Find location & data ";
 var IP_ADDR_TEXT = "IP address:";
-var LAT = "lat"; // latitude in ReactJS IPMapper
-var LNG = "lng"; // longitude in ReactJS IPMapper
+var LAT_INPUT = "lat"; // latitude user input
+var LNG_INPUT = "lng"; // longitude user input

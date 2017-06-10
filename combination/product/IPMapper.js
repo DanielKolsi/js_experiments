@@ -1,3 +1,9 @@
+/*
+
+Maps user given IP address to geographical location by setting a marker to the
+correct Google Map position.
+*/
+
 var Globals = (function() {
   "use strict";
   var module = {};
@@ -39,7 +45,8 @@ var IPMapper = (function() {
   // pans geographical map to correspond correct latitude and longitude values & sets the marker
   module.pan = function() {
 
-    var point = new google.maps.LatLng(document.getElementById(LAT).value, document.getElementById(LNG).value);
+    var point = new google.maps.LatLng(document.getElementById(LAT_INPUT).value,
+      document.getElementById(LNG_INPUT).value);
     Globals.map.panTo(point);
     Globals.marker.setPosition(point);
     Globals.marker.setLabel("");
