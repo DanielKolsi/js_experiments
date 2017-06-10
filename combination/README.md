@@ -1,22 +1,21 @@
 
 
-This application maps a given user input IP address (internet protocol) to a geographical location
-and provides additional information to a table from the IP. This service user Google Maps and
-another third party service (ipvigilante.com) to provide IP related data.
+This demonsrative application ("combination") maps a given user input IP address (internet protocol) to a geographical location and provides additional information to a table from the IP. This service user Google Maps and
+another third party service (ipvigilante.com) to provide IP related data. Table can be cleaned & removed on will.
 
 User can also give a latitude and longitude values and add a marker to the map to
 correspond that position.
 
-====================================
-Running the application and testing
-====================================
+
+* Running the application and testing
+
 1) npm install
 2) npm start
 3) npm test
 
-====================================
-* Used technologies explained *
-====================================
+
+* Used technologies explained 
+
 Server side
 
 In addition to this functionality, the purpose of this small application is to
@@ -29,57 +28,44 @@ Client side
 
 The client side uses Javascript (+AJAX), JQuery, ReactJS (+Babel), JSON and CSS.
 
+* Main folder structure:
 
-Main folder structure
 
- index.html  // starting point for http://127.0.0.1:8000/
- index.js    // ReactJS UI + rendering functionality for input & table
+
+ index.html // starting point for http://127.0.0.1:8000/
+
+ index.js // ReactJS UI + rendering functionality for input & table 
+
  package.json
 
  -- config // constants, server URLs etc.
+ 
  -- css    // style sheet
- -- product // client JS for AJAX & mapping IP to geo map etc.
- -- src  // server side
- -- test // unit test suite related code & config
 
-Unit testing suite
+ -- product // client JS for AJAX & mapping IP to geo map etc.
+
+ -- src  // server side
+
+ -- test // unit test suite related code & config
+ 
+
+* Unit testing suite
 
 The unit test suite uses Mocha and Chai. Promises is used for testing
 asynchronous code.
 
+Some of the technics and libraries used:
 
------------------
-Combines multiple Javascript libraries + technics, e.g.
-ReactJS, Express, Node, Babel..
-
-* ExpressJS, ReactJS
+* ExpressJS, ReactJS, Babel
 * Promises: https://davidwalsh.name/promises
-* callbacks (async)
+* callbacks (async, JSON)
 * catch & error handling
-* map() + reduce() + filter()
-* IIFE "iffy"
-* mix-ins
 * design patterns, especially the module pattern (https://toddmotto.com/mastering-the-module-pattern/)
 * third-party API in server & JSON responses based on client parametrization
 * test suite (Mocha)
-----
-TODO
-* Unicode symbols
 * CSS
-* table + 2 headers
-* code modularization, function closures
-* config ++
-* directory structure check
-* tests
-* check error handling (try/catch etc.)
-* comments
-* UI fixes, hide table headers etc.
-* remove hard coding (IPs etc.)
-* server side config?!
-* Mocha + Chai: https://github.com/DanielKolsi/node-mocha-chai-tutorial/blob/master/test/test-server.js
-* check package.json & correct dependencies (versions)
-* Babel (production version)
-* arrow functions (to tests?)
+* separate config 
 
-http://eloquentjavascript.net/
-https://medium.com/javascript-scene/reduce-composing-software-fe22f0c39a1d
+
+
+
