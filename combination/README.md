@@ -14,7 +14,7 @@ correspond that position.
 3) npm test
 
 
-* Used technologies explained *
+* Used technologies explained 
 
 Server side
 
@@ -28,24 +28,28 @@ Client side
 
 The client side uses Javascript (+AJAX), JQuery, ReactJS (+Babel), JSON and CSS.
 
-Main folder structure:
+* Main folder structure:
 
 
 
- index.html, starting point for http://127.0.0.1:8000/
+ index.html // starting point for http://127.0.0.1:8000/
 
- index.js, ReactJS UI + rendering functionality for input & table 
+ index.js // ReactJS UI + rendering functionality for input & table 
 
  package.json
 
  -- config // constants, server URLs etc.
+ 
  -- css    // style sheet
+
  -- product // client JS for AJAX & mapping IP to geo map etc.
+
  -- src  // server side
+
  -- test // unit test suite related code & config
  
 
-Unit testing suite
+* Unit testing suite
 
 The unit test suite uses Mocha and Chai. Promises is used for testing
 asynchronous code.
