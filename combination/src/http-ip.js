@@ -1,4 +1,3 @@
-var utils = require('./Utils');
 var country = "country-x";
 var querystring = require('querystring');
 var https = require('https');
